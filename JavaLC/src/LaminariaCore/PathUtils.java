@@ -1,3 +1,11 @@
+/*
+ * This class is distributed as part of the Laminaria Core (Java Version).
+ * Get the Source Code in GitHub:
+ * https://github.com/MrKelpy/LaminariaCore
+ *
+ * The LaminariaCore is Open Source and distributed under the
+ * MIT License
+ */
 package LaminariaCore;
 
 import java.util.ArrayList;
@@ -24,7 +32,6 @@ public class PathUtils {
 
     }
 
-
     public static String getParent(String path) {
         /* Returns the path to the parent directory of a directory/file.
          * > Returns a String containing the path for the Parent Directory of the given path.
@@ -38,4 +45,5 @@ public class PathUtils {
 
         return String.join("\\", result);
     }
+
 }
