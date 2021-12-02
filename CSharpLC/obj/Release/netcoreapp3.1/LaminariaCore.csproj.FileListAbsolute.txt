@@ -1,0 +1,12 @@
+C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\bin\Release\netcoreapp3.1\LaminariaCore.exe
+C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\bin\Release\netcoreapp3.1\LaminariaCore.deps.json
+C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\bin\Release\netcoreapp3.1\LaminariaCore.runtimeconfig.json
+C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\bin\Release\netcoreapp3.1\LaminariaCore.runtimeconfig.dev.json
+C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\bin\Release\netcoreapp3.1\LaminariaCore.dll
+C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\bin\Release\netcoreapp3.1\LaminariaCore.pdb
+C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\obj\Release\netcoreapp3.1\LaminariaCore.AssemblyInfoInputs.cache
+C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\obj\Release\netcoreapp3.1\LaminariaCore.AssemblyInfo.cs
+C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\obj\Release\netcoreapp3.1\LaminariaCore.csproj.CoreCompileInputs.cache
+C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\obj\Release\netcoreapp3.1\LaminariaCore.dll
+C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\obj\Release\netcoreapp3.1\LaminariaCore.pdb
+C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\obj\Release\netcoreapp3.1\LaminariaCore.genruntimeconfig.cache
