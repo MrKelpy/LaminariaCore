@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\10PGPS2\\source\\LaminariaCore\\CSharpLC\\LaminariaCore\\LaminariaCore.csproj": {}
+    "C:\\Users\\10PGPS2\\source\\LaminariaCore\\CSharpLC\\LaminariaCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\10PGPS2\\source\\LaminariaCore\\CSharpLC\\LaminariaCore\\LaminariaCore.csproj": {
+    "C:\\Users\\10PGPS2\\source\\LaminariaCore\\CSharpLC\\LaminariaCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\10PGPS2\\source\\LaminariaCore\\CSharpLC\\LaminariaCore\\LaminariaCore.csproj",
+        "projectUniqueName": "C:\\Users\\10PGPS2\\source\\LaminariaCore\\CSharpLC\\LaminariaCore.csproj",
         "projectName": "LaminariaCore",
-        "projectPath": "C:\\Users\\10PGPS2\\source\\LaminariaCore\\CSharpLC\\LaminariaCore\\LaminariaCore.csproj",
+        "projectPath": "C:\\Users\\10PGPS2\\source\\LaminariaCore\\CSharpLC\\LaminariaCore.csproj",
         "packagesPath": "C:\\Users\\10PGPS2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\10PGPS2\\source\\LaminariaCore\\CSharpLC\\LaminariaCore\\obj\\",
+        "outputPath": "C:\\Users\\10PGPS2\\source\\LaminariaCore\\CSharpLC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\10PGPS2\\AppData\\Roaming\\NuGet\\NuGet.Config",
