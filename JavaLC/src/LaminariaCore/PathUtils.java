@@ -29,22 +29,6 @@ public class PathUtils {
         }
         // Returns the complete path excluding the last character, because it'll always be a '\'.
         return path.deleteCharAt(path.length() - 1).toString();
-
-    }
-
-
-    public static String getParent(String path) {
-        /* Returns the path to the parent directory of a directory/file.
-         * > Returns a String containing the path for the Parent Directory of the given path.
-         */
-
-        ArrayList<String> result = new ArrayList<>();
-        Collections.addAll(result, path.split("\\\\"));  // Converts the path.split() array to an ArrayList
-
-        result.remove(result.size() - 1);  // Removes the last file/directory from the path
-        result.removeIf(String::isEmpty);  // Cleans up the resultant list
-
-        return String.join("\\", result);
     }
 
 }
