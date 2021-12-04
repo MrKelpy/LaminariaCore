@@ -11,3 +11,16 @@ C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\obj\Debug\netcoreapp3.1\Laminaria
 C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\obj\Debug\netcoreapp3.1\LaminariaCore.dll
 C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\obj\Debug\netcoreapp3.1\LaminariaCore.pdb
 C:\Users\10PGPS2\source\LaminariaCore\CSharpLC\obj\Debug\netcoreapp3.1\LaminariaCore.genruntimeconfig.cache
+C:\dev\.LaminariaCore\CSharpLC\bin\Debug\netcoreapp3.1\LaminariaCore.exe
+C:\dev\.LaminariaCore\CSharpLC\bin\Debug\netcoreapp3.1\LaminariaCore.deps.json
+C:\dev\.LaminariaCore\CSharpLC\bin\Debug\netcoreapp3.1\LaminariaCore.runtimeconfig.json
+C:\dev\.LaminariaCore\CSharpLC\bin\Debug\netcoreapp3.1\LaminariaCore.runtimeconfig.dev.json
+C:\dev\.LaminariaCore\CSharpLC\bin\Debug\netcoreapp3.1\LaminariaCore.dll
+C:\dev\.LaminariaCore\CSharpLC\bin\Debug\netcoreapp3.1\LaminariaCore.pdb
+C:\dev\.LaminariaCore\CSharpLC\obj\Debug\netcoreapp3.1\LaminariaCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\.LaminariaCore\CSharpLC\obj\Debug\netcoreapp3.1\LaminariaCore.AssemblyInfoInputs.cache
+C:\dev\.LaminariaCore\CSharpLC\obj\Debug\netcoreapp3.1\LaminariaCore.AssemblyInfo.cs
+C:\dev\.LaminariaCore\CSharpLC\obj\Debug\netcoreapp3.1\LaminariaCore.csproj.CoreCompileInputs.cache
+C:\dev\.LaminariaCore\CSharpLC\obj\Debug\netcoreapp3.1\LaminariaCore.dll
+C:\dev\.LaminariaCore\CSharpLC\obj\Debug\netcoreapp3.1\LaminariaCore.pdb
+C:\dev\.LaminariaCore\CSharpLC\obj\Debug\netcoreapp3.1\LaminariaCore.genruntimeconfig.cache
