@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nsjw+IqvsbpcVWJpMwPPpPuMj6MK1FLx99waq0NXcW0d3tLa0hwCbrxBZBJatuwQ85nwdo4DKnjsbqA55va2rA==",
+  "dgSpecHash": "u3EQ05TejkdqzKhBjTOFUvhJ3S8Yr2/yla+UROgHx5whM+Ficpucsl1ZQiME4DBIDAxAMDVKS849cur5DLMYzw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\10PGPS2\\source\\LaminariaCore\\CSharpLC\\LaminariaCore.csproj",
+  "projectFilePath": "C:\\dev\\.LaminariaCore\\CSharpLC\\LaminariaCore.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
