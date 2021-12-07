@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * This class is distributed as part of the Laminaria Core (CSharp Version).
+ * Get the Source Code in GitHub:
+ * https://github.com/MrKelpy/LaminariaCore
+ *
+ * The LaminariaCore is Open Source and distributed under the
+ * MIT License
+ */
+using System;
 using System.IO;
 using LaminariaCore.LaminariaCore;
 

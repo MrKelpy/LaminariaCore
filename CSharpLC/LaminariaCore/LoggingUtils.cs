@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * This class is distributed as part of the Laminaria Core (CSharp Version).
+ * Get the Source Code in GitHub:
+ * https://github.com/MrKelpy/LaminariaCore
+ *
+ * The LaminariaCore is Open Source and distributed under the
+ * MIT License
+ */
+
+using System;
 using System.Diagnostics;
 using System.IO;
 
@@ -62,10 +71,10 @@ namespace application {
             String path = Path.Join(this.path, this.session + ".log");
 
             Directory.CreateDirectory(this.path);
-            using (StreamWriter file = new StreamWriter(path, true))
+            using (StreamWriter file = new StreamWriter(path))
             {
                 String loggingMsg = this.BuildLogString(message);
-                file.Write(loggingMsg);
+                file.WriteLine(loggingMsg);
             }
         }
 
