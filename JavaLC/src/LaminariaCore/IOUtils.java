@@ -13,6 +13,9 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"unused", "ResultOfMethodCallIgnored"})
 public class IOUtils {
+    /* Class used to implement utility functions to perform operations with
+     * files, and anything IO.
+     */
 
 
     public static ArrayList<String> readFile(String path) {
@@ -62,7 +65,8 @@ public class IOUtils {
 
             if (text.isBlank())
                 return;
-            br.write(text);
+            br.write(text.strip());
+            br.newLine();
 
         } catch (IOException e) { assert true; }  // Append unsuccessful.
 

@@ -13,6 +13,9 @@ import java.util.Collections;
 
 @SuppressWarnings("unused")
 public class PathUtils {
+    /* Class used to implement utility functions for interactions
+     * with directory or filepaths.
+     */
 
 
     public static String join(String ... chunks) {
