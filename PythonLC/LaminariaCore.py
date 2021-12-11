@@ -9,7 +9,7 @@ MIT License
 """
 
 # Built-in Imports
-from datetime import datetime
+import datetime
 import random
 import asyncio
 import os
@@ -24,6 +24,7 @@ from fpdf import FPDF
 ###############################################################################
 ###                             DATE & TIME                                 ###
 ###############################################################################
+
 
 def twochars(arg):
     """
@@ -62,7 +63,7 @@ def get_formatted_date_now(include_seconds: bool = False, formatting: int = 1):
     :return: String
     """
 
-    now = datetime.now()
+    now = datetime.datetime.now()
     if formatting == 1:
         date_string = f"{twochars(str(now.day))}/{twochars(str(now.month))}/{twochars(str(now.year))} - " \
                       f"{twochars(str(now.hour))}:{twochars(str(now.minute))}"
@@ -81,9 +82,18 @@ def get_formatted_date_now(include_seconds: bool = False, formatting: int = 1):
     return date_string
 
 
+def time_until_midnight():
+    """
+    Get seconds left until midnight
+    """
+    tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+    timedelta_until_midnight = datetime.datetime.combine(tomorrow, datetime.time.min) - datetime.datetime.now()
+    return timedelta_until_midnight.seconds
+
 ###############################################################################
 ###                             DISCORD.PY                                  ###
 ###############################################################################
+
 
 async def hasrole(role: discord.Role, user: discord.Member, add: bool = False):
     """
@@ -233,7 +243,7 @@ async def as_get_formatted_date_now(include_seconds: bool = False, formatting: i
     :return: String
     """
 
-    now = datetime.now()
+    now = datetime.datetime.now()
     if formatting == 1:
         date_string = f"{await twochars(str(now.day))}/{await twochars(str(now.month))}/{await twochars(str(now.year))} - " \
                       f"{await twochars(str(now.hour))}:{await twochars(str(now.minute))}"
@@ -427,7 +437,7 @@ async def show_help_menu(ctx, bot: commands.Bot, colour=discord.Colour.red(), re
 
             category_embed.add_field(name=name.title(), value=f"{description}\n`USAGE: {ctx.prefix}{name}{params}`\n"
                                                               f"`ALIASES: {aliases}`", inline=False)
-            category_embed.timestamp = datetime.now()
+            category_embed.timestamp = datetime.datetime.now()
             category_embed.set_footer(text=f"Developed by {dev}")
             category_embed.set_thumbnail(url=bot.user.avatar_url)
 
@@ -483,7 +493,7 @@ async def load_missing_perms_embed(colour=discord.Colour.red()):
         description="Sorry, you can't use this command.",
         colour=colour
     )
-    embed.timestamp = datetime.now()
+    embed.timestamp = datetime.datetime.now()
 
     return embed
 
@@ -531,7 +541,7 @@ async def interactive_dialog(**kwargs):
         description=kwargs["body"],
         colour=kwargs["colour"]
     )
-    dialog_embed.timestamp = datetime.now()
+    dialog_embed.timestamp = datetime.datetime.now()
     dialog_embed.set_thumbnail(url=kwargs["thumbnail"])
     dialog_embed.set_image(url=kwargs["picture"])
     dialog_embed.set_footer(text=kwargs["footer"])
