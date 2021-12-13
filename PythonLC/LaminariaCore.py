@@ -19,6 +19,7 @@ from discord.ext import commands
 import discord
 from fpdf import FPDF
 
+
 # Local Application Imports
 
 ###############################################################################
@@ -89,6 +90,28 @@ def time_until_midnight():
     tomorrow = datetime.date.today() + datetime.timedelta(days=1)
     timedelta_until_midnight = datetime.datetime.combine(tomorrow, datetime.time.min) - datetime.datetime.now()
     return timedelta_until_midnight.seconds
+
+###############################################################################
+###                            PLACEHOLDERS                                 ###
+###############################################################################
+
+
+async def small_ipsum():
+    """
+    Returns the small version of the lorem impsum placeholder
+    :return:
+    """
+    return "Lorem ipsum dolor sit amet."
+
+
+async def big_ipsum():
+    """
+    Returns a bigger version of the lorem ipsum text than the small_ipsum function does.
+    :return:
+    """
+    return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt " \
+           "ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco " \
+           "laboris nisi ut aliquip ex ea commodo consequat."
 
 ###############################################################################
 ###                             DISCORD.PY                                  ###
@@ -565,7 +588,6 @@ async def interactive_dialog(**kwargs):
             # Adds the reactions to a message, if the emojis kwarg is not missing.
 
             for emoji in kwargs["emojis"]:
-
                 await dialog_message.add_reaction(emoji)
 
         try:

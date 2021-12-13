@@ -8,17 +8,18 @@
  */
 package test;
 
-import LaminariaCore.LoggingUtils;
+import LaminariaCore.PlaceholderUtils;
+
 
 @SuppressWarnings("RedundantThrows")
 public class App {
 
     public static void run() throws Exception {
+        // Start writing here
 
-        LoggingUtils logger = new LoggingUtils();
-        logger.LogConsole("test");
-        logger.LogFile("test");
+        System.out.println(PlaceholderUtils.BIG_IPSUM);
+
+
 
     }
-
 }
