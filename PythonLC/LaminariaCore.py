@@ -107,8 +107,8 @@ def get_absolute_screen_coords(relx, rely):
     """
 
     monitor = screeninfo.get_monitors()[0]
-    x = {0.01*((relx*100)/monitor.width) * monitor.width}
-    y = {0.01*((rely*100)/monitor.height) * monitor.height}
+    x = 0.01*((relx*100)/monitor.width) * monitor.width
+    y = 0.01*((rely*100)/monitor.height) * monitor.height
     return x, y
 
 
