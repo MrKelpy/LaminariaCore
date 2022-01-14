@@ -364,7 +364,7 @@ class InteractionUtils:
         Sends a loading embed to a specified channel.
         :param channel_id: The channel for the message to be sent to. -> discord.TextChannel
         :param colour: The embed colour. -> int
-        :return: discord.Embed
+        :return: interactions.Embed
         """
 
         loading_embed = interactions.Embed(
@@ -377,50 +377,22 @@ class InteractionUtils:
         return loading
 
 
-    async def get_textchannel_chatlog(self, text_channel: interactions.Channel, limit: int = None):
-        """
-        Returns a TextChannel chatlog
-        :param text_channel: The text channel for the data to be gathered from
-        :param limit: An integer to limit the amount of messages retrieved.
-        :return: String
-        """
-
-        all_messages = await self.bot.http.get_channel_messages()
-        all_messages.reverse()
-
-        # Parses out and legibilises the messages into a chatlog
-        chatlog = ""
-        for message in all_messages:
-
-            if message.embeds:
-                content = message.embeds[0].title
-            elif message.attachments:
-                content = f"FILE(s) :{[file.filename for file in message.attachments]}"
-            else:
-                content = message.content
-                content = content.split("```")
-                content = '\n'.join(content)
-
-            chatlog += f"[{await get_formatted_date_async(message.created_at, include_seconds=True)}] [- MSG ID: {message.id}]" \
-                       f" [- AUTHOR ID: {message.author.id}] <{message.author}> {content}\n"
-
-        return chatlog
-
-
-    async def get_textchannel_firstmessage(self, text_channel: discord.TextChannel):
+    async def get_textchannel_firstmessage(self, channel_id: int):
         """
         Returns the first message on a TextChannel
-        :param text_channel: The textchannel to retrieve the message from. -> discord.TextChannel
-        :return: discord.Message
+        :param channel_id: The textchannel to retrieve the message from. -> discord.TextChannel
+        :return: interactions.Message
         """
 
-        all_messages = await text_channel.history(limit=None).flatten()
+        channel = interactions.Channel(**await self.bot.http.get_channel(channel_id), _client=self.bot.http)
+        all_messages = await self.bot.http.get_channel_messages(channel)
         all_messages.reverse()
 
         return all_messages[0]
 
 
-    async def get_member_object(self, member_id: int, guild: discord.Guild):
+    @staticmethod
+    async def get_member_object(member_id: int, guild: interactions.Guild):
         """
         Returns a discord.Member object of a member from a given ID
         :param member_id: The member ID. -> int
@@ -436,7 +408,8 @@ class InteractionUtils:
         return None
 
 
-    async def show_help_menu(self, ctx, bot: discord.Client, colour=discord.Colour.red(), reverse=False):
+    async def show_help_menu(self, ctx: interactions.CommandContext, colour: int = int("eb4034", 16),
+                             reverse: int = False, testing: bool = False):
         """
         Standard help menu used between bots created by Alex, with loads of quirks to make the UI more appealing.
         The help menu is completely computer-generated.
@@ -448,37 +421,42 @@ class InteractionUtils:
             > Categories are sorted alphabetically, aswell as bot_commands.
             > Not specifying a category will result in the command being thrown into a "General" category
 
+        :param testing: If set to true, processes all commands from all scopes
         :param reverse:
         :param ctx: discord context.
-        :param bot: discord BOT instance.
         :param colour: Help menu embed colour
         :return: discord.Embed
         """
 
-        help_menu_base = discord.Embed(
-            title=f"{bot.user.name}'s Help Menu - ",
-            description=f"Prefix: `{ctx.prefix}`",
+        help_menu_base = interactions.Embed(
+            title=f"{self.bot.me.name}'s Help Menu - ",
             colour=colour
         )
 
-        dev = await bot.fetch_user(740969223681212507)
+        dev = await self.bot.http.get_user(740969223681212507)
         commands_dictionary = dict()
         embed_list = list()
 
-        for command in bot.commands:
+        # Checks for testing mode
+        if testing:
+            scope = 930131186930565130
+        else:
+            scope = None
+
+        for command in self.bot.http.get_application_command(self.bot.me.id, guild_id=scope):
             # Iterates through all the registered bot_commands
 
-            if not command.description:
+            if not command["description"]:
                 # Skips over the command if no description is provided
                 continue
 
             category_name = "General"
-            if command.description.startswith("|") and command.description.count(
+            if command["description"].startswith("|") and command["description"].count(
                     "|") == 2 and not command.description.endswith("||"):
                 # Parses out the category of a command if a match is detected
 
-                category_name = command.description.split("|")[1].strip().title()
-                command.description = command.description.split("|")[2].strip()
+                category_name = command["description"].split("|")[1].strip().title()
+                command.description = command["description"].split("|")[2].strip()
 
             params = ""
             alias_list = "No aliases found"
@@ -491,7 +469,7 @@ class InteractionUtils:
                 alias_list = ""
 
                 for alias in command.aliases:
-                    alias_list += f"|{ctx.prefix}{alias}| "
+                    alias_list += f"|/{alias}| "
 
             # Build the dict update
             try:
