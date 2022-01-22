@@ -571,8 +571,103 @@ class DPyUtils:
     This class uses discord-py-interactions.
     """
 
-    def __init__(self):
+    def __init__(self, bot: commands.Bot):
+        self.bot = bot
         self.tc = self.twochars
+
+
+    async def show_help_menu(self, ctx, colour=discord.Colour.red(), reverse=False):
+        """
+        Standard help menu used between bots created by Alex, with loads of quirks to make the UI more appealing.
+        The help menu is completely computer-generated.
+        Description management:
+            > Leaving the description of a command without text will it not be shown in the UI
+            > Writing |String| at the beggining of a command description will have it sorted into a category
+            (Replace "String" with the category name)
+            > Categories are sorted alphabetically, aswell as bot_commands.
+            > Not specifying a category will result in the command being thrown into a "General" category
+        :param reverse:
+        :param ctx: discord context.
+        :param colour: Help menu embed colour
+        :return: discord.Embed
+        """
+
+        help_menu_base = discord.Embed(
+            title=f"{self.bot.user.name}'s Help Menu - ",
+            description=f"Prefix: `{ctx.prefix}`",
+            colour=colour
+        )
+
+        dev = await self.bot.fetch_user(740969223681212507)
+        commands_dictionary = dict()
+        embed_list = list()
+
+        for command in self.bot.commands:
+            # Iterates through all the registered bot_commands
+
+            if not command.description:
+                # Skips over the command if no description is provided
+                continue
+
+            category_name = "General"
+            if command.description.startswith("|") and command.description.count(
+                    "|") == 2 and not command.description.endswith("||"):
+                # Parses out the category of a command if a match is detected
+
+                category_name = command.description.split("|")[1].strip().title()
+                command.description = command.description.split("|")[2].strip()
+
+            params = ""
+            alias_list = "No aliases found"
+            for param in command.clean_params:
+                # Parses out the command parameters for usage in the command info
+                params += f" <{param}> "
+
+            if command.aliases:
+                # If any command aliases exist, parse them out for usage in the command info
+                alias_list = ""
+
+                for alias in command.aliases:
+                    alias_list += f"|{ctx.prefix}{alias}| "
+
+            # Build the dict update
+            try:
+                _ = commands_dictionary[category_name]
+                commands_dictionary[category_name].append([command.name, command.description, alias_list, params])
+
+            except KeyError:
+                command_registration = {category_name: [[command.name, command.description, alias_list, params]]}
+                commands_dictionary.update(command_registration)
+
+        for category in sorted(commands_dictionary):
+            # Loads in the categories with their bot_commands to the help menu
+
+            # Loads in the embed for the category
+            category_embed = help_menu_base.copy()
+            category_embed.title += f"{category} Commands"
+
+            for command in sorted(commands_dictionary[category]):
+                # Gets the command info
+                name = command[0]
+                description = command[1]
+                aliases = command[2]
+                params = command[3]
+
+                category_embed.add_field(name=name.title(), value=f"{description}\n`USAGE: {ctx.prefix}{name}{params}`\n"
+                                                                  f"`ALIASES: {aliases}`", inline=False)
+                category_embed.timestamp = datetime.datetime.now()
+                category_embed.set_footer(text=f"Developed by {dev}")
+                category_embed.set_thumbnail(url=self.bot.user.avatar_url)
+
+            embed_list.append(category_embed)
+
+        if reverse:
+            embed_list = reversed(embed_list)
+
+        for embed in embed_list:
+            # Sends all the embeds in the list
+            await ctx.send(embed=embed)
+
 
     @staticmethod
     async def hasrole(role: discord.Role, user: discord.Member, add: bool = False):
@@ -812,101 +907,6 @@ class DPyUtils:
                 return member
 
         return None
-
-
-    @staticmethod
-    async def show_help_menu(ctx, bot: commands.Bot, colour=discord.Colour.red(), reverse=False):
-        """
-        Standard help menu used between bots created by Alex, with loads of quirks to make the UI more appealing.
-        The help menu is completely computer-generated.
-        Description management:
-            > Leaving the description of a command without text will it not be shown in the UI
-            > Writing |String| at the beggining of a command description will have it sorted into a category
-            (Replace "String" with the category name)
-            > Categories are sorted alphabetically, aswell as bot_commands.
-            > Not specifying a category will result in the command being thrown into a "General" category
-        :param reverse:
-        :param ctx: discord context.
-        :param bot: discord BOT instance.
-        :param colour: Help menu embed colour
-        :return: discord.Embed
-        """
-
-        help_menu_base = discord.Embed(
-            title=f"{bot.user.name}'s Help Menu - ",
-            description=f"Prefix: `{ctx.prefix}`",
-            colour=colour
-        )
-
-        dev = await bot.fetch_user(740969223681212507)
-        commands_dictionary = dict()
-        embed_list = list()
-
-        for command in bot.commands:
-            # Iterates through all the registered bot_commands
-
-            if not command.description:
-                # Skips over the command if no description is provided
-                continue
-
-            category_name = "General"
-            if command.description.startswith("|") and command.description.count(
-                    "|") == 2 and not command.description.endswith("||"):
-                # Parses out the category of a command if a match is detected
-
-                category_name = command.description.split("|")[1].strip().title()
-                command.description = command.description.split("|")[2].strip()
-
-            params = ""
-            alias_list = "No aliases found"
-            for param in command.clean_params:
-                # Parses out the command parameters for usage in the command info
-                params += f" <{param}> "
-
-            if command.aliases:
-                # If any command aliases exist, parse them out for usage in the command info
-                alias_list = ""
-
-                for alias in command.aliases:
-                    alias_list += f"|{ctx.prefix}{alias}| "
-
-            # Build the dict update
-            try:
-                _ = commands_dictionary[category_name]
-                commands_dictionary[category_name].append([command.name, command.description, alias_list, params])
-
-            except KeyError:
-                command_registration = {category_name: [[command.name, command.description, alias_list, params]]}
-                commands_dictionary.update(command_registration)
-
-        for category in sorted(commands_dictionary):
-            # Loads in the categories with their bot_commands to the help menu
-
-            # Loads in the embed for the category
-            category_embed = help_menu_base.copy()
-            category_embed.title += f"{category} Commands"
-
-            for command in sorted(commands_dictionary[category]):
-                # Gets the command info
-                name = command[0]
-                description = command[1]
-                aliases = command[2]
-                params = command[3]
-
-                category_embed.add_field(name=name.title(), value=f"{description}\n`USAGE: {ctx.prefix}{name}{params}`\n"
-                                                                  f"`ALIASES: {aliases}`", inline=False)
-                category_embed.timestamp = datetime.datetime.now()
-                category_embed.set_footer(text=f"Developed by {dev}")
-                category_embed.set_thumbnail(url=bot.user.avatar_url)
-
-            embed_list.append(category_embed)
-
-        if reverse:
-            embed_list = reversed(embed_list)
-
-        for embed in embed_list:
-            # Sends all the embeds in the list
-            await ctx.send(embed=embed)
 
 
     @staticmethod
