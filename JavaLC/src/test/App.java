@@ -9,6 +9,7 @@
 package test;
 
 import LaminariaCore.PlaceholderUtils;
+import LaminariaDB.LaminariaDB;
 
 
 @SuppressWarnings("RedundantThrows")
@@ -17,9 +18,9 @@ public class App {
     public static void run() throws Exception {
         // Start writing here
 
-        System.out.println(PlaceholderUtils.BIG_IPSUM);
-
-
+        LaminariaDB db = new LaminariaDB("./woeisme");
+        System.out.println("hi");
+        db.addCollection("Test");
 
     }
 }

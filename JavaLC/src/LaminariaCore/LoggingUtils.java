@@ -43,7 +43,7 @@ public class LoggingUtils {
     }
 
 
-    public String BuildLogString(String message) {
+    public String buildLogString(String message) {
         /* Builds a proper Logging String from a given raw message.
          * This method interacts with the Stack Trace in order to retrieve the caller namespace,
          * caller class and caller method, so as to provide more information at the time of Logging.
@@ -63,22 +63,22 @@ public class LoggingUtils {
     }
 
 
-    public void LogConsole(String message) {
+    public void logConsole(String message) {
         /* Sends a logging string to STDIN, taking into account the given
          * raw message and the caller attributes.
          */
 
-        String loggingString = this.BuildLogString(message);
+        String loggingString = this.buildLogString(message);
         System.out.println(loggingString);
     }
 
 
-    public void LogFile(String message) {
+    public void logFile(String message) {
         /* Writes a logging string to a file, taking into account the given
          * raw message, caller attributes and current logger session.
          */
 
-        String loggingString = this.BuildLogString(message);
+        String loggingString = this.buildLogString(message);
         String filepath = PathUtils.join(this.path, this.session + ".log");
         IOUtils.ensureFilepath(filepath);
         IOUtils.appendFile(filepath, loggingString);

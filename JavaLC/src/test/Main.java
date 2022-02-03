@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
-public class Main {
+public class  Main {
 
     public static void main(String[] args) {
 
@@ -24,8 +24,8 @@ public class Main {
         catch (Exception e) {
 
             LoggingUtils logger = new LoggingUtils();
-            logger.LogFile(e.toString());
-            logger.LogConsole(e.toString());
+            logger.logFile(e.toString());
+            logger.logConsole(e.toString());
 
         }
     }
