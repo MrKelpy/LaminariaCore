@@ -114,7 +114,7 @@ class Collection:
 
     def insert_one(self, data: dict):
         """
-        Inserts a single document into the collection and cache.
+        Inserts a single document into the collection.
         This action will create a JSON document into
         :param data: The dictionary to dump into the document.
         :return:
@@ -134,7 +134,7 @@ class Collection:
 
     def insert_many(self, *data: dict):
         """
-        Inserts a single document into the collection and cache.
+        Inserts a single document into the collection.
         This action will create a JSON document into
         :param data: A varargs list of dictionaries to be dumped into the many Documents
         :return:

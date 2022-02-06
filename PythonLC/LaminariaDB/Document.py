@@ -45,9 +45,9 @@ class Document:
             raise InvalidDocumentException(f"Operation attempted on non-existent document \"{self.id}\"")
 
 
-    def update(self, data: Dict[str, Any]) -> int:
+    def update(self) -> int:
         """
-        Updates the content within the document.
+        Updates the content within the document and removes it from cache.
         :return: int, number of lines affected.
         """
         self.verify_document()
@@ -57,9 +57,9 @@ class Document:
             doc_before: List[str] = document.readlines()
 
         with open(self.path, "w") as document:
-            data["_id"] = self.id
-            data["_collection"] = self.collection
-            json.dump(data, document, indent=4)
+            self.content["_id"] = self.id
+            self.content["_collection"] = self.collection
+            json.dump(self.content, document, indent=4)
 
         with open(self.path, "r") as document:  # Registers the document state after the update
             doc_after: List[str] = document.readlines()
@@ -85,7 +85,7 @@ class Document:
         """
 
         with open(self.path, "r") as document:
-            data = json.load(document)
+            data: Dict[str, Any] = json.load(document)
         return data
 
 
@@ -95,7 +95,5 @@ class Document:
         :return:
         """
 
-        _destroy = [cached for cached in self._cache if cached["id"] == self.id]
-
-        for element in _destroy:
-            self._cache.remove(element)
+        element: Dict[str, Any] = [cached for cached in self._cache if cached["id"] == self.id][0]
+        self._cache.remove(element)

@@ -31,13 +31,13 @@ class LaminariaDB:
         self._path: Path = Path(path)
         self._cache: List[Dict[str, Any]] =list()
         self.name: str = self._path.name
-        self.__prepare_database()
+        self.__ensure_database()
         self.collections: Dict[str, Collection] = self.__get_collections()
 
 
     def add_collection(self, name: str) -> Collection:
         """
-        Creates a collection inside the database and prepares it into cache.
+        Creates a collection inside the database.
 
         A collection is a portion of the database that contains
         JSON documents with data with the aim of organising them
@@ -66,10 +66,9 @@ class LaminariaDB:
         return newcoll
 
 
-    def __prepare_database(self):
+    def __ensure_database(self):
         """
-        Prepares the database by creating any necessary folders
-        and doing any pre-usage operations.
+        Ensures that the specified folder for the database exists.
         :return:
         """
 
@@ -91,27 +90,3 @@ class LaminariaDB:
             collection_dict[collectdir] = Collection(collection_path, self._cache)
 
         return collection_dict
-
-
-db = LaminariaDB("./woeisme")
-with suppress(CollectionAlreadyExistsException):
-    db.add_collection("test")
-
-coll = db.collections["test"]
-coll.insert_many(
-    {"age":1, "name":"levi"},
-    {"age":3, "name":"levi2"},
-    {"age":2, "name":"lev3"},
-    {"age":3, "name":"levi4"},
-    {"age":3, "name":"levi5"},
-    {"age":3, "name":"levi"},
-    {"age":3, "name":"levi"},
-    {"age":2, "name":"levi"},
-    {"age":6, "name":"levi"},
-    {"age":3, "name":"levi"},
-    {"age":6, "name":"levi"},
-)
-disall = coll.find({"age":3})
-disall[0].update({"age":4, "name":"levi"})
-dis = coll.find({"name":"levi5"}, limit=1)[0]
-print(dis)
