@@ -49,7 +49,7 @@ class Collection:
     def drop(self) -> int:
         """
         Deletes the collection from the database's physical location and cache.
-        All of the contents inside the collection will also be deleted from the former.
+        All the contents inside the collection will also be deleted from the former.
         :return: int, amount of files affected.
         """
         self.verify_collection()
@@ -61,7 +61,7 @@ class Collection:
 
     def find(self, query: Dict[str, Any] = None, limit: int = None) -> List[Document]:
         """
-        Returns all of the Documents with information that matches the query.
+        Returns all the Documents with information that matches the query.
         :param limit: The limit of matches to be returned.
         :param query: The information pattern to match the documents with.
         :return: List[Document], a list of the matched documents.
@@ -77,11 +77,11 @@ class Collection:
                 docinfo: Dict[str, Any] = json.load(document)
 
             # For each key in the query dict keys, check if the key:val in docinfo exist.
-            # Also appends all of the matches to cache
+            # Also appends all the matches to cache
             if query is None or all(key in docinfo and docinfo[key] == query[key] for key in query):
                 doc = Document(filepath, self._cache)
                 matches.append(doc)
-                self._cache.append({"id": doc.id, "collection": self.name , "document": doc})
+                self._cache.append({"id": doc.id, "collection": self.name, "document": doc})
 
         return matches
 

@@ -9,7 +9,6 @@ MIT License
 """
 
 # Built-in Imports
-from contextlib import suppress
 from typing import Dict, List, Any
 from pathlib import Path
 import string
@@ -29,7 +28,7 @@ class LaminariaDB:
 
     def __init__(self, path: str):
         self._path: Path = Path(path)
-        self._cache: List[Dict[str, Any]] =list()
+        self._cache: List[Dict[str, Any]] = list()
         self.name: str = self._path.name
         self.__ensure_database()
         self.collections: Dict[str, Collection] = self.__get_collections()
@@ -72,15 +71,13 @@ class LaminariaDB:
         :return:
         """
 
-        # Creates the database folder if nonexistent
         if not os.path.isdir(self._path):
             os.makedirs(self._path)
 
 
     def __get_collections(self) -> Dict[str, Collection]:
         """
-        Returns all of the collections registered in the database.
-        Also prepares all of the collections into cache.
+        Returns all the collections registered in the database.
         :return: Dict[str, Collection], a dictionary containing a key:val association for the collections.
         """
         collection_dict: Dict[str, Collection] = dict()
