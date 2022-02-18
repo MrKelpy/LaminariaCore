@@ -325,7 +325,7 @@ class DPyUtils:
                 alias_list = ""
 
                 for alias in command.aliases:
-                    alias_list += f"|{ctx.prefix}{alias}| "
+                    alias_list += f"{ctx.prefix}{alias}, "
 
             # Build the dict update
             try:
@@ -351,7 +351,7 @@ class DPyUtils:
                 params = command[3]
 
                 category_embed.add_field(name=name.title(), value=f"{description}\n`USAGE: {ctx.prefix}{name}{params}`\n"
-                                                                  f"`ALIASES: {aliases}`", inline=False)
+                                                                  f"`ALIASES: {aliases[:-2]}`", inline=False)
                 category_embed.timestamp = datetime.now()
                 category_embed.set_footer(text=f"Developed by {dev}")
                 category_embed.set_thumbnail(url=bot.user.avatar_url)
