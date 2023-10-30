@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OriginalParentCache &mdash; PgpsUtilsAEFC 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Utils" href="../../utils/index.html" />
+    <link rel="prev" title="Internals" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            PgpsUtilsAEFC
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../forms/index.html">Forms</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Internals</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OriginalParentCache</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#constructors">Constructors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-implementations">Method Implementations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../utils/index.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/index.html">Common</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PgpsUtilsAEFC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Internals</a></li>
+      <li class="breadcrumb-item active">OriginalParentCache</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/reference/internals/caches/OriginalParentCache.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="originalparentcache">
+<h1>OriginalParentCache<a class="headerlink" href="#originalparentcache" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">static</span> <span class="pre">internals.caches.OriginalParentCache</span></code></div>
+<div class="line-block">
+<div class="line">This singleton internal class implements a cache that stores every control’s original parent, so that the dynamic loading/unloading of active components can be managed smoothly.</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>This class cannot be used directly by the end user, save for with reflection. Just because you can access it with reflection, however, doesn’t mean that you should. This is a highly sensitive class that may break your program when misused.
+<strong>This class is documented here only for maintainability purposes.</strong></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">properties<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>&lt;OriginalParentCache&gt; INSTANCE -  The instance used to access the class, since it is a singleton.</p></li>
+<li><p>Dictionary&lt;string, Control&gt; cache - The cache containing the original parents of every control.</p></li>
+</ul>
+</dd>
+</dl>
+<hr class="docutils" />
+<section id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Permalink to this heading"></a></h2>
+<hr class="docutils" />
+<div class="highlight-cs notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="w"> </span><span class="nf">OriginalParentCache</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">This constructor is purely a singleton-enforcing ctor.</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="method-implementations">
+<h2>Method Implementations<a class="headerlink" href="#method-implementations" title="Permalink to this heading"></a></h2>
+<hr class="docutils" />
+<div class="highlight-cs notranslate"><div class="highlight"><pre><span></span><span class="k">internal</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">AddToCache</span><span class="p">(</span><span class="n">Control</span><span class="w"> </span><span class="n">control</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Adds the specified control to the cache, in the form of a name:parent mapping.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>&lt;Control&gt; control - The control to add to the cache.</p></li>
+</ul>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>&lt;bool&gt; Whether or not the control was successfully added to cache.</p>
+</dd>
+</dl>
+<hr class="docutils" />
+<div class="highlight-cs notranslate"><div class="highlight"><pre><span></span><span class="k">internal</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="nf">GetParentOf</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Returns the parent of the specified control, as it was before it was added to the cache.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>&lt;string&gt; name - The name of the control to look for in the cache.</p></li>
+</ul>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>&lt;Control&gt; The cached original parent for the specified name.</p>
+</dd>
+</dl>
+<hr class="docutils" />
+<div class="highlight-cs notranslate"><div class="highlight"><pre><span></span><span class="k">internal</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">Contains</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Checks if the specified control is cached.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>&lt;string&gt; name - The name of the control to look for in the cache.</p></li>
+</ul>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>&lt;bool&gt; Whether the control exists in the cache or not.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Internals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../utils/index.html" class="btn btn-neutral float-right" title="Utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Alexandre Silva (MrKelpy).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
