@@ -20,7 +20,7 @@ namespace LaminariaCore_Databases.sqlserver
         /// <summary>
         /// The connection string used to connect to the database.
         /// </summary>
-        private SqlConnection Connection { get; set; }
+        public SqlConnection Connection { get; set; }
 
         /// <summary>
         /// "Manual" constructor for the SQLServerConnector class. Takes in a connection string
@@ -59,6 +59,11 @@ namespace LaminariaCore_Databases.sqlserver
         }
 
         /// <summary>
+        /// Disconnects from the SQL Server.
+        /// </summary>
+        public void CloseConnection() => this.Connection.Close();
+
+        /// <summary>
         /// Connects to an SQL Server given a connection string.
         /// </summary>
         /// <param name="connectionString">SQL Server Formatted Connection String</param>
@@ -67,10 +72,5 @@ namespace LaminariaCore_Databases.sqlserver
             this.Connection = new SqlConnection(connectionString);
             this.Connection.Open();
         }
-        
-        /// <summary>
-        /// Disconnects from the SQL Server.
-        /// </summary>
-        private void CloseConnection() => this.Connection.Close();
     }
 }
