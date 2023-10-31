@@ -42,7 +42,7 @@ namespace LaminariaCore_Databases.sqlserver
         /// <param name="password">The password to use to connect</param>
         public SQLServerConnector(string server, string database, string username, string password)
         {
-            String conn = $@"Server={server};Database={database};User={username};Password={password};";
+            String conn = $"Server={server};Database={database};User={username};Password={password};";
             this.ConnectTo(conn);
         }
 
@@ -54,7 +54,7 @@ namespace LaminariaCore_Databases.sqlserver
         /// <param name="database">The database name to use</param>
         public SQLServerConnector(string server, string database)
         {
-            String conn = $@"Server={server};Database={database};Trusted_Connection=True;";
+            String conn = $"Server={server};Database={database};Trusted_Connection=True;";
             this.ConnectTo(conn);
         }
 

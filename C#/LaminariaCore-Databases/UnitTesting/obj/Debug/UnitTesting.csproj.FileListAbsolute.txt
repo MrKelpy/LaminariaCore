@@ -1,0 +1,11 @@
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\bin\Debug\UnitTesting.dll
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\bin\Debug\UnitTesting.pdb
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\bin\Debug\LaminariaCore_Databases.dll
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\bin\Debug\nunit.framework.dll
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\bin\Debug\LaminariaCore_Databases.pdb
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\bin\Debug\nunit.framework.xml
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\obj\Debug\UnitTesting.csproj.AssemblyReference.cache
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\obj\Debug\UnitTesting.csproj.CoreCompileInputs.cache
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\obj\Debug\UnitTesting.csproj.CopyComplete
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\obj\Debug\UnitTesting.dll
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\obj\Debug\UnitTesting.pdb

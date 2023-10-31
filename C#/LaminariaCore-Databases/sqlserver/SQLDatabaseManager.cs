@@ -47,15 +47,14 @@ namespace LaminariaCore_Databases.sqlserver
         /// <summary>
         /// Performs a very simple "SELECT (Selection) FROM (Tables)" query.
         /// </summary>
+        /// <param name="table">The table to get the fields from</param>
         /// <param name="fields">A list of fields to select the information from</param>
-        /// <param name="tables">A list of tables to get the selection from</param>
         /// <returns>A matrix containing the values after passing through </returns>
-        public List<string[]> SimpleSelect(string[] fields, string[] tables)
+        public List<string[]> SimpleSelect(string table, params string[] fields)
         {
-            String fieldSelection = this.ArrayToQueryString(fields);
-            String tableSelection = this.ArrayToQueryString(tables);
+            string fieldSelection = this.ArrayToQueryString(fields);
 
-            return this.SendQuery(@$"SELECT {fieldSelection} FROM {tableSelection}");
+            return this.SendQuery(@$"SELECT {fieldSelection} FROM {table}");
         }
 
         /// <summary>
