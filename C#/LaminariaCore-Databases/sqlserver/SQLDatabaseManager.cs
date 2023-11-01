@@ -42,20 +42,6 @@ namespace LaminariaCore_Databases.sqlserver
             catch (InvalidOperationException) { return false; }
             catch (SqlException) { return false; }
         }
-        
-
-        /// <summary>
-        /// Performs a very simple "SELECT (Selection) FROM (Tables)" query.
-        /// </summary>
-        /// <param name="table">The table to get the fields from</param>
-        /// <param name="fields">A list of fields to select the information from</param>
-        /// <returns>A matrix containing the values after passing through </returns>
-        public List<string[]> SimpleSelect(string table, params string[] fields)
-        {
-            string fieldSelection = this.ArrayToQueryString(fields);
-
-            return this.SendQuery(@$"SELECT {fieldSelection} FROM {table}");
-        }
 
         /// <summary>
         /// Sends a command into the connected database. This is a genera command that will return
@@ -95,7 +81,7 @@ namespace LaminariaCore_Databases.sqlserver
         /// </summary>
         /// <param name="array">The array to be converted</param>
         /// <returns>The query string to be used to specify the query objects</returns>
-        public string ArrayToQueryString(string[] array)
+        public string ArrayToQueryString(params string[] array)
         {
             string result = "";
             foreach (string s in array) result += s + ", ";
