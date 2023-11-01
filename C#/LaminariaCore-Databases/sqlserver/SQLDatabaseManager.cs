@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace LaminariaCore_Databases.sqlserver
 {
@@ -74,6 +76,31 @@ namespace LaminariaCore_Databases.sqlserver
             reader.Close();
             cmd.Dispose();
             return results;
+        }
+        
+        /// <summary>
+        /// Reads the content of an SQL script and executes it through a transaction,
+        /// separated by "GO" statements.
+        /// </summary>
+        /// <param name="filepath">The filepath to the script</param>
+        /// <returns>The total number of rows affected</returns>
+        public int RunSqlScript(string filepath)
+        {
+            // Reads the file and splits it into GO batches
+            int rowsAffected = 0;
+            string script = File.ReadAllText(filepath);
+            string[] batches = Regex.Split(script, @"(?i-msnx:\b(?<!-{2,}.*)go[^a-zA-Z])", RegexOptions.Singleline | RegexOptions.IgnoreCase);
+
+            // Runs each batch separately as a non-query
+            foreach (string statement in batches)
+            {
+                if (statement.Trim().Length == 0) continue;
+                
+                using SqlCommand command = new SqlCommand(statement.Trim(), this.Connector.Connection);
+                rowsAffected += command.ExecuteNonQuery();
+            }
+
+            return rowsAffected;
         }
         
         /// <summary>

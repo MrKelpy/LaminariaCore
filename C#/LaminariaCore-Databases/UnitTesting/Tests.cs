@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using LaminariaCore_Databases.sqlserver;
 using NUnit.Framework;
 
@@ -7,6 +8,19 @@ namespace UnitTesting
     [TestFixture]
     public class Tests
     {
+        
+
+        [Test]
+        public void ScriptTest()
+        {
+            SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "master");
+            SQLDatabaseManager manager = new SQLDatabaseManager(connector);
+            
+            int rows = manager.RunSqlScript("../../assets/school.sql");
+            Console.WriteLine(rows + " rows affected.");
+            Assert.Pass();
+        }
+        
         [Test]
         public void QueryTest()
         {
@@ -21,6 +35,5 @@ namespace UnitTesting
 
             Assert.Pass();
         }
-        
     }
 }
