@@ -51,8 +51,7 @@ namespace LaminariaCore_Databases.sqlserver
         /// <param name="name">The name of the database to backup</param>
         /// <param name="filepath">The path to save the backup to</param>
         /// <returns>The number of rows affected</returns>
-        /// TODO: Fix this, tests are failing
-        public int ExportDatabase(string name, string filepath)
+        public void ExportDatabase(string name, string filepath)
         {
             // Saves the current database and switches to master
             string currentDatabase = this.Connector.Connection.Database;
@@ -64,8 +63,6 @@ namespace LaminariaCore_Databases.sqlserver
             // Sends the backup command and switches back to the original database
             int rows = this.SendNonQuery($"BACKUP DATABASE [{name}] TO  DISK = '{filepath}'");
             this.UseDatabase(currentDatabase);
-            
-            return rows;
         }
         
         /// <summary>

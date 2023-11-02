@@ -41,9 +41,9 @@ namespace UnitTesting
         {
             SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
             SQLDatabaseManager manager = new SQLDatabaseManager(connector);
-            int rows = manager.ExportDatabase("Escola", "./backup.bak");
+            manager.ExportDatabase("Escola", "C:/dev/escola.bak");
             
-            Console.WriteLine(rows + " rows affected.");
+            Assert.Pass();
         }
     }
 }
