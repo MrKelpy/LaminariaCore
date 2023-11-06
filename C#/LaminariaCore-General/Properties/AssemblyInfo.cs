@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LaminariaCore_General")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("LaminariaCore - General")]
+[assembly: AssemblyDescription("A general utilitary library containing a bunch of useful methods and classes that get repeatedly used across programs.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LaminariaCore_General")]
-[assembly: AssemblyCopyright("Copyright ©  2023")]
+[assembly: AssemblyCompany("MrKelpy")]
+[assembly: AssemblyProduct("LaminariaCore")]
+[assembly: AssemblyCopyright("Copyright © MrKelpy 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

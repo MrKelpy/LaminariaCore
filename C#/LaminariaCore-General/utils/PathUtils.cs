@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace PgpsUtilsAEFC.utils
+namespace LaminariaCore_General.utils
 {
     /// <summary>
     /// This class aims to provide a set of utilities to work with paths.

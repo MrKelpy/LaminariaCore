@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace PgpsUtilsAEFC.utils
+namespace LaminariaCore_General.utils
 {
 
     /// <summary>
     /// This class provides a wide variety of methods for quick and easy writing/reading from files.
     /// </summary>
-    public class FileUtils
+    public static class FileUtils
     {
 
         /// <summary>
