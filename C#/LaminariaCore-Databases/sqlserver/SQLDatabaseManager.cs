@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -137,6 +138,87 @@ namespace LaminariaCore_Databases.sqlserver
         }
 
         /// <summary>
+        /// Updates all the fields in a set table, with the specified value, based on a condition.
+        /// </summary>
+        /// <param name="table">The table to update the field of</param>
+        /// <param name="fieldToUpdate">The field to be updated</param>
+        /// <param name="value">The value to add to the field</param>
+        /// <param name="condition">An optional search condition to narrow down field entries</param>
+        /// <returns>The number of rows affected</returns>
+        public int Update(string table, string fieldToUpdate, dynamic value, string condition)
+        {
+            // Builds the query based on the parameters, adding a condition if specified
+            string query = "UPDATE " + table + " SET " + fieldToUpdate + " = @p1";
+            if (condition != null) query += " WHERE " + condition;
+            
+            using SqlCommand command = new SqlCommand(query, this.Connector.Connection);
+            command.Parameters.AddWithValue("@p1", value);
+            
+            return command.ExecuteNonQuery();
+        }
+
+        /// <summary>
+        /// Updates all the fields in a set table, with the specified value.
+        /// </summary>
+        /// <param name="table">The table to update the field of</param>
+        /// <param name="fieldToUpdate">The field to be updated</param>
+        /// <param name="value">The value to add to the field</param>
+        /// <returns>The number of rows affected</returns>
+        public int Update(string table, string fieldToUpdate, dynamic value) =>
+            this.Update(table, fieldToUpdate, value, null);
+
+        /// <summary>
+        /// Performs a SELECT query into the specified table, with the specified fields and condition.
+        /// </summary>
+        /// <param name="fields">The fields to select from the table</param>
+        /// <param name="table">The table to select the fields from</param>
+        /// <param name="condition">The condition to narrow down the results</param>
+        /// <returns>A matrix containing the results</returns>
+        public List<string[]> Select(string[] fields, string table, string condition)
+        {
+            // Builds the query based on the parameters, adding a condition if specified
+            string query = "SELECT " + this.ArrayToQueryString(fields).Trim('(').Trim(')') +" FROM " + table;
+            if (condition != null) query += " WHERE " + condition;
+
+            // Gets the columns for the table removing the ones that are not in the query
+            string[] columns = this.GetColumnsForTable(table);
+            if (!fields[0].Equals("*")) columns = columns.Where(fields.Contains).ToArray();
+            
+            // Sends the query and inserts the columns at the start of the results
+            List<string[]> results = this.SendQuery(query);
+            results.Insert(0, columns);
+            
+            return results;
+        }
+        
+        /// <summary>
+        /// Performs a SELECT query into the specified table, with the specified fields.
+        /// </summary>
+        /// <param name="fields">The fields to select from the table</param>
+        /// <param name="table">The table to select the fields from</param>
+        /// <returns>A matrix containing the results</returns>
+        public List<string[]> Select(string[] fields, string table) =>
+            this.Select(fields, table, null);
+        
+        /// <summary>
+        /// Performs a 'SELECT *' query into the specified table, with the and condition.
+        /// </summary>
+        /// <param name="table">The table to select the fields from</param>
+        /// <param name="condition">The condition to narrow down the results</param>
+        /// <returns>A matrix containing the results</returns>
+        public List<string[]> Select(string table, string condition) =>
+            this.Select(new [] {"*"}, table, condition);
+
+        
+        /// <summary>
+        /// Performs a 'SELECT *' query into the specified table. This is equivalent to doing 'SELECT * FROM [Table]'
+        /// </summary>
+        /// <param name="table">The table to select the fields from</param>
+        /// <returns>A matrix containing the results</returns>
+        public List<string[]> Select(string table) =>
+            this.Select(new [] {"*"}, table, null);
+
+        /// <summary>
         /// Sends a command into the connected database. This is a genera command that will return
         /// the query as a Matrix-
         /// </summary>
@@ -204,7 +286,33 @@ namespace LaminariaCore_Databases.sqlserver
 
             return rowsAffected;
         }
-        
+
+        /// <summary>
+        /// Returns an array containing the names of all the tables in the database.
+        /// </summary>
+        /// <param name="tableName">The name of the table to get the columns for</param>
+        /// <returns>The column names for the table</returns>
+        public string[] GetColumnsForTable(string tableName)
+        {
+            string query = $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{tableName}';";
+            
+            using SqlCommand cmd = new SqlCommand(query, this.Connector.Connection);
+            using SqlDataReader reader = cmd.ExecuteReader();
+            
+            // Creates the list to store the results that will then be converted into an array
+            List<string> results = new List<string>();
+
+            // Gets the values from the reader and stores them in an array, then added to a matrix.
+            while (reader.Read())
+            {
+                for (int i = 0; i < reader.FieldCount; i++)
+                    results.Add(reader[i].ToString());
+            }
+
+            return results.ToArray();
+        }
+
+
         /// <summary>
         /// Converts an array of strings into a query string, with each element separated by a comma.
         /// </summary>

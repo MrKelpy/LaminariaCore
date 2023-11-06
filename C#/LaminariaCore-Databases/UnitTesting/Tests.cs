@@ -56,6 +56,27 @@ namespace UnitTesting
             if (rows > 0) Assert.Pass();
             Assert.Fail();
         }
+
+        [Test]
+        public void UpdateAndSelectTest()
+        {
+            ScriptTest();
+            
+            using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
+            SQLDatabaseManager manager = new SQLDatabaseManager(connector);
+            
+            if (!manager.UseDatabase("Escola")) Assert.Fail();
+            
+            int rows = manager.Update("Alunos", "Nome", "Reinaldo Ferreira", "Idade = 17");
+            var results = manager.Select(new [] {"NumeroInterno", "Nome"}, "Alunos");
+            
+            foreach (string[] result in results)
+                Console.WriteLine(result[0] + " " + result[1]);
+            
+            Console.WriteLine(rows + " rows affected.");
+
+            Assert.Pass();
+        }
         
         [Test]
         public void RestrictedInsertionTest()
