@@ -123,6 +123,20 @@ namespace LaminariaCore_Databases.sqlserver
         }
 
         /// <summary>
+        /// Performs DELETE FROM query into the specified table, with the specified condition.
+        /// </summary>
+        /// <param name="table">The table to delete the data from</param>
+        /// <param name="condition">A string specifying the condition for the entries to be deleted</param>
+        /// <returns>The number of rows affected</returns>
+        public int DeleteFrom(string table, string condition)
+        {
+            string query = "DELETE FROM " + table + " WHERE " + condition;
+            using SqlCommand command = new SqlCommand(query, this.Connector.Connection);
+
+            return command.ExecuteNonQuery();
+        }
+
+        /// <summary>
         /// Sends a command into the connected database. This is a genera command that will return
         /// the query as a Matrix-
         /// </summary>

@@ -13,14 +13,12 @@ namespace UnitTesting
         [Test]
         public void ScriptTest()
         {
-            SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "master");
+            using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "master");
             SQLDatabaseManager manager = new SQLDatabaseManager(connector);
-            
-            QueryTest();
             
             int rows = manager.RunSqlScript("../../assets/school.sql");
             Console.WriteLine(rows + " rows affected.");
-            Assert.Pass();
+            // Assert.Pass();
         }
         
         [Test]
@@ -36,6 +34,27 @@ namespace UnitTesting
                 Console.WriteLine(field[0] + " " + field[1] + " " + field[2]);
             
             // Assert.Pass();
+        }
+        
+        [Test]
+        public void DeleteFromTest()
+        {
+            ScriptTest();
+            
+            using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
+            SQLDatabaseManager manager = new SQLDatabaseManager(connector);
+
+            if (!manager.UseDatabase("Escola")) Assert.Fail();
+
+            int rows = manager.DeleteFrom("TurmasDisciplinas", "CodigoDisciplina = 3");
+                
+            var results = manager.SendQuery("SELECT * FROM [TurmasDisciplinas]");
+            foreach (string[] result in results)
+                Console.WriteLine(result[0] + " " + result[1] + " " + result[2]);
+            
+            Console.WriteLine(rows + " rows affected.");
+            if (rows > 0) Assert.Pass();
+            Assert.Fail();
         }
         
         [Test]
