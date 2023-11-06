@@ -7,3 +7,5 @@ C:\dev\LaminariaCore\C#\LaminariaCore-General\obj\Release\LaminariaCore-General.
 C:\dev\LaminariaCore\C#\LaminariaCore-General\obj\Release\LaminariaCore-General.csproj.CopyComplete
 C:\dev\LaminariaCore\C#\LaminariaCore-General\obj\Release\LaminariaCore_General.dll
 C:\dev\LaminariaCore\C#\LaminariaCore-General\obj\Release\LaminariaCore_General.pdb
+C:\dev\LaminariaCore\C#\LaminariaCore-General\bin\Release\LaminariaCore_General.xml
+C:\dev\LaminariaCore\C#\LaminariaCore-General\obj\Release\LaminariaCore_General.xml
