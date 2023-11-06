@@ -74,7 +74,7 @@ namespace LaminariaCore_Databases.sqlserver
         /// <param name="table">The table to add the values into</param>
         /// <param name="values">The values to add into the table</param>
         /// <returns></returns>
-        public bool InsertInto(string table, params string[] values)
+        public bool InsertInto(string table, params dynamic[] values)
         {
             string query = "INSERT INTO " + table + " VALUES (" + this.ArrayToQueryString(values) + ")";
             return this.SendNonQuery(query) > 0;

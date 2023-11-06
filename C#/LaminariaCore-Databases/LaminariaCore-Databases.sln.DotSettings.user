@@ -4,6 +4,7 @@
   &lt;Not&gt;&#xD;
     &lt;TestAncestor&gt;&#xD;
       &lt;TestId&gt;NUnit3x::5FC8AD62-CD74-4CAA-8BFF-F6D1D30B0008::.NETFramework,Version=v4.7.2::UnitTesting.Tests.QueryTest&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::5FC8AD62-CD74-4CAA-8BFF-F6D1D30B0008::.NETFramework,Version=v4.7.2::UnitTesting.Tests.BackupTest&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
   &lt;/Not&gt;&#xD;
 &lt;/SessionState&gt;</s:String>

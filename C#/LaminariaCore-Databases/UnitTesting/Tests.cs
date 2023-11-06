@@ -37,6 +37,20 @@ namespace UnitTesting
         }
 
         [Test]
+        public void InsertionTest()
+        {
+            SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
+            SQLDatabaseManager manager = new SQLDatabaseManager(connector);
+
+            if (!manager.UseDatabase("Escola")) Assert.Fail();
+
+            if (manager.InsertInto("Alunos", "Reinaldo Ferreira", "15"))
+                Assert.Pass();
+            
+            Assert.Fail();
+        }
+
+        [Test]
         public void BackupTest()
         {
             SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
