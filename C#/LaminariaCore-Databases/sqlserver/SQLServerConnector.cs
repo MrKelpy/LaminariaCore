@@ -14,7 +14,7 @@ namespace LaminariaCore_Databases.sqlserver
     /// 
     /// </summary>
     // ReSharper disable once InconsistentNaming
-    public class SQLServerConnector
+    public class SQLServerConnector : IDisposable
     {
         
         /// <summary>
@@ -27,7 +27,7 @@ namespace LaminariaCore_Databases.sqlserver
         /// and connects to the database using it.
         /// </summary>
         /// <param name="connectionString">SQL Server Formatted Connection String</param>
-        public SQLServerConnector(String connectionString)
+        public SQLServerConnector(string connectionString)
         {
             this.ConnectTo(connectionString);
         }
@@ -42,7 +42,7 @@ namespace LaminariaCore_Databases.sqlserver
         /// <param name="password">The password to use to connect</param>
         public SQLServerConnector(string server, string database, string username, string password)
         {
-            String conn = $"Server={server};Database={database};User={username};Password={password};";
+            string conn = $"Server={server};Database={database};Pooling=False;User={username};Password={password};";
             this.ConnectTo(conn);
         }
 
@@ -54,14 +54,14 @@ namespace LaminariaCore_Databases.sqlserver
         /// <param name="database">The database name to use</param>
         public SQLServerConnector(string server, string database)
         {
-            String conn = $"Server={server};Database={database};Trusted_Connection=True;";
+            string conn = $"Server={server};Database={database};Pooling=False;Trusted_Connection=True;";
             this.ConnectTo(conn);
         }
 
         /// <summary>
-        /// Disconnects from the SQL Server.
+        /// Disposes of the connection to the database.
         /// </summary>
-        public void CloseConnection() => this.Connection.Close();
+        public void Dispose() => this.Connection.Dispose();
 
         /// <summary>
         /// Connects to an SQL Server given a connection string.
@@ -72,5 +72,6 @@ namespace LaminariaCore_Databases.sqlserver
             this.Connection = new SqlConnection(connectionString);
             this.Connection.Open();
         }
+        
     }
 }

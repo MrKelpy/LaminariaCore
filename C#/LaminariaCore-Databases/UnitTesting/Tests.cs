@@ -16,6 +16,8 @@ namespace UnitTesting
             SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "master");
             SQLDatabaseManager manager = new SQLDatabaseManager(connector);
             
+            QueryTest();
+            
             int rows = manager.RunSqlScript("../../assets/school.sql");
             Console.WriteLine(rows + " rows affected.");
             Assert.Pass();
@@ -24,16 +26,32 @@ namespace UnitTesting
         [Test]
         public void QueryTest()
         {
-            SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
+            using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "master");
             SQLDatabaseManager manager = new SQLDatabaseManager(connector);
 
             if (!manager.UseDatabase("Escola")) Assert.Fail();
 
             var fields = manager.SendQuery("SELECT * FROM Alunos");
             foreach (string[] field in fields)
-                Console.WriteLine(field[0], field[1], field[2]);
+                Console.WriteLine(field[0] + " " + field[1] + " " + field[2]);
+            
+            // Assert.Pass();
+        }
+        
+        [Test]
+        public void RestrictedInsertionTest()
+        {
+            SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
+            SQLDatabaseManager manager = new SQLDatabaseManager(connector);
 
-            Assert.Pass();
+            if (!manager.UseDatabase("Escola")) Assert.Fail();
+
+            string[] fields = { "Nome", "Idade", "Localidade" };
+            dynamic[] parameters = { "Ambrósio Oliveira", 18, "Forte da Casa" };
+            if (manager.InsertIntoRestricted("Alunos", fields, parameters))
+                Assert.Pass();
+            
+            Assert.Fail();
         }
 
         [Test]
@@ -44,7 +62,7 @@ namespace UnitTesting
 
             if (!manager.UseDatabase("Escola")) Assert.Fail();
 
-            if (manager.InsertInto("Alunos", "Reinaldo Ferreira", "15"))
+            if (manager.InsertInto("Alunos", "Reinaldo Ferreira", 15, "Forte da Casa"))
                 Assert.Pass();
             
             Assert.Fail();

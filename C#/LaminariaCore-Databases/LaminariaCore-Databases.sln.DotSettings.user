@@ -1,11 +1,42 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0ca11f1e_002D9ec1_002D4b67_002Da5d6_002D5203798690d8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ScriptTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5FC8AD62-CD74-4CAA-8BFF-F6D1D30B0008::.NETFramework,Version=v4.7.2::UnitTesting.Tests.ScriptTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c53297d4_002D80e8_002D46ef_002Da2d2_002D9e526cfbffdb/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="QueryTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Not&gt;&#xD;
+    &lt;And&gt;&#xD;
+      &lt;Or&gt;&#xD;
+        &lt;Not&gt;&#xD;
+          &lt;TestAncestor&gt;&#xD;
+            &lt;TestId&gt;NUnit3x::5FC8AD62-CD74-4CAA-8BFF-F6D1D30B0008::.NETFramework,Version=v4.7.2::UnitTesting.Tests.QueryTest&lt;/TestId&gt;&#xD;
+          &lt;/TestAncestor&gt;&#xD;
+        &lt;/Not&gt;&#xD;
+        &lt;TestAncestor&gt;&#xD;
+          &lt;TestId&gt;NUnit3x::5FC8AD62-CD74-4CAA-8BFF-F6D1D30B0008::.NETFramework,Version=v4.7.2::UnitTesting.Tests.QueryTest&lt;/TestId&gt;&#xD;
+        &lt;/TestAncestor&gt;&#xD;
+      &lt;/Or&gt;&#xD;
+      &lt;TestAncestor&gt;&#xD;
+        &lt;TestId&gt;NUnit3x::5FC8AD62-CD74-4CAA-8BFF-F6D1D30B0008::.NETFramework,Version=v4.7.2::UnitTesting.Tests.BackupTest&lt;/TestId&gt;&#xD;
+        &lt;TestId&gt;NUnit3x::5FC8AD62-CD74-4CAA-8BFF-F6D1D30B0008::.NETFramework,Version=v4.7.2::UnitTesting.Tests.InsertionTest&lt;/TestId&gt;&#xD;
+        &lt;TestId&gt;NUnit3x::5FC8AD62-CD74-4CAA-8BFF-F6D1D30B0008::.NETFramework,Version=v4.7.2::UnitTesting.Tests.QueryTest&lt;/TestId&gt;&#xD;
+        &lt;TestId&gt;NUnit3x::5FC8AD62-CD74-4CAA-8BFF-F6D1D30B0008::.NETFramework,Version=v4.7.2::UnitTesting.Tests.RestrictedInsertionTest&lt;/TestId&gt;&#xD;
+      &lt;/TestAncestor&gt;&#xD;
+    &lt;/And&gt;&#xD;
+  &lt;/Not&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e46544b0_002Db469_002D44e0_002D94c1_002D152410a68a13/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;Not&gt;&#xD;
+      &lt;TestAncestor&gt;&#xD;
+        &lt;TestId&gt;NUnit3x::5FC8AD62-CD74-4CAA-8BFF-F6D1D30B0008::.NETFramework,Version=v4.7.2::UnitTesting.Tests.QueryTest&lt;/TestId&gt;&#xD;
+      &lt;/TestAncestor&gt;&#xD;
+    &lt;/Not&gt;&#xD;
     &lt;TestAncestor&gt;&#xD;
       &lt;TestId&gt;NUnit3x::5FC8AD62-CD74-4CAA-8BFF-F6D1D30B0008::.NETFramework,Version=v4.7.2::UnitTesting.Tests.QueryTest&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::5FC8AD62-CD74-4CAA-8BFF-F6D1D30B0008::.NETFramework,Version=v4.7.2::UnitTesting.Tests.BackupTest&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
-  &lt;/Not&gt;&#xD;
+  &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	</wpf:ResourceDictionary>
