@@ -2,8 +2,8 @@
 
 ## Overview
 
-LaminariaCore is a collection of versatile utility libraries designed to simplify development in multiple programming languages. These libraries provide a toolbox of reusable code to streamline the programming process.
-Visit the [Wiki](https://github.com/MrKelpy/LaminariaCore/wiki) to check out the documentation.
+LaminariaCore is a collection of versatile utility libraries designed to simplify development in multiple programming languages. These libraries provide a toolbox of reusable code to streamline the programming process.<br><br>
+Visit the [Wiki](https://github.com/MrKelpy/LaminariaCore/wiki) to check out the **documentation** and the **installation** instructions for every package.
 
 ## Contribution
 
