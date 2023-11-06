@@ -74,9 +74,6 @@ namespace LaminariaCore_Databases.sqlserver
         /// <returns>The number of rows affected</returns>
         public int ImportDatabase(string name, string filepath)
         {
-            // Switches to master to perform the restore
-            this.UseDatabase("master");
-            
             // The file must be a .bak file
             if (Path.GetExtension(filepath) != ".bak") 
                 throw new FormatException("The file path must be a .bak file.");
@@ -94,7 +91,7 @@ namespace LaminariaCore_Databases.sqlserver
         /// <param name="fields">The fields restricting the values to be added into the table</param>
         /// <param name="values">The values matching the restriction fields</param>
         /// <returns>Whether or not changes happened in the database</returns>
-        public bool InsertIntoRestricted(string table, string[] fields, params dynamic[] values)
+        public bool InsertInto(string table, string[] fields, params dynamic[] values)
         {
             if (fields.Length != values.Length) throw new ArgumentException("The number of fields and values for the query must be the same.");
             
@@ -109,7 +106,7 @@ namespace LaminariaCore_Databases.sqlserver
         /// Performs a simple INSERT INTO query into the specified table, with the specified values.
         /// <br></br>
         /// This method assumes that you are inserting into all of the columns in the table. For a more specialised
-        /// insert use the SendNonQuery(string) method.
+        /// insert use the InsertInto(string, string[], dynamic[]) method.
         /// </summary>
         /// <param name="table">The table to add the values into</param>
         /// <param name="values">The values to add into the table</param>

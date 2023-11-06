@@ -18,7 +18,7 @@ namespace UnitTesting
             
             int rows = manager.RunSqlScript("../../assets/school.sql");
             Console.WriteLine(rows + " rows affected.");
-            // Assert.Pass();
+            Assert.Pass();
         }
         
         [Test]
@@ -33,7 +33,7 @@ namespace UnitTesting
             foreach (string[] field in fields)
                 Console.WriteLine(field[0] + " " + field[1] + " " + field[2]);
             
-            // Assert.Pass();
+            Assert.Pass();
         }
         
         [Test]
@@ -81,14 +81,14 @@ namespace UnitTesting
         [Test]
         public void RestrictedInsertionTest()
         {
-            SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
+            using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
             SQLDatabaseManager manager = new SQLDatabaseManager(connector);
 
             if (!manager.UseDatabase("Escola")) Assert.Fail();
 
             string[] fields = { "Nome", "Idade", "Localidade" };
             dynamic[] parameters = { "Ambrósio Oliveira", 18, "Forte da Casa" };
-            if (manager.InsertIntoRestricted("Alunos", fields, parameters))
+            if (manager.InsertInto("Alunos", fields, parameters))
                 Assert.Pass();
             
             Assert.Fail();
@@ -97,7 +97,7 @@ namespace UnitTesting
         [Test]
         public void InsertionTest()
         {
-            SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
+            using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
             SQLDatabaseManager manager = new SQLDatabaseManager(connector);
 
             if (!manager.UseDatabase("Escola")) Assert.Fail();
@@ -111,7 +111,7 @@ namespace UnitTesting
         [Test]
         public void BackupTest()
         {
-            SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
+            using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
             SQLDatabaseManager manager = new SQLDatabaseManager(connector);
             manager.ExportDatabase("Escola", "C:/dev/escola.bak");
             
