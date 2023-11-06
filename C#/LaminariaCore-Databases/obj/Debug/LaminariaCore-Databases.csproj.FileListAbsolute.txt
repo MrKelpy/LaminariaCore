@@ -1,6 +1,0 @@
-C:\dev\LaminariaCore\C#\LaminariaCore-Databases\bin\Debug\LaminariaCore_Databases.dll
-C:\dev\LaminariaCore\C#\LaminariaCore-Databases\bin\Debug\LaminariaCore_Databases.pdb
-C:\dev\LaminariaCore\C#\LaminariaCore-Databases\obj\Debug\LaminariaCore-Databases.csproj.AssemblyReference.cache
-C:\dev\LaminariaCore\C#\LaminariaCore-Databases\obj\Debug\LaminariaCore-Databases.csproj.CoreCompileInputs.cache
-C:\dev\LaminariaCore\C#\LaminariaCore-Databases\obj\Debug\LaminariaCore_Databases.dll
-C:\dev\LaminariaCore\C#\LaminariaCore-Databases\obj\Debug\LaminariaCore_Databases.pdb
