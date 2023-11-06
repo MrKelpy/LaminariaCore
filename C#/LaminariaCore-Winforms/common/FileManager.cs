@@ -1,11 +1,10 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using PgpsUtilsAEFC.common.abstraction;
-using PgpsUtilsAEFC.utils;
+using LaminariaCore_General.utils;
+using LaminariaCore_Winforms.common.abstraction;
 
-namespace PgpsUtilsAEFC.common
+namespace LaminariaCore_Winforms.common
 {
     /// <summary>
     /// This class implements an interface to interact with a program's file structure
@@ -13,7 +12,6 @@ namespace PgpsUtilsAEFC.common
     /// </summary>
     public class FileManager : AbstractBaseOperations
     {
-
         /// <summary>
         /// Main constructor for the FileManager class. Sets the root path to the specified value.
         /// If not specified, use the AppData/.PROGRAM-NAME folder.

@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LaminariaCore_Winforms")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("LaminariaCore - Winforms")]
+[assembly: AssemblyDescription("A winforms utility library with methods and systems used for winforms applications.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LaminariaCore_Winforms")]
-[assembly: AssemblyCopyright("Copyright ©  2023")]
+[assembly: AssemblyCompany("MrKelpy")]
+[assembly: AssemblyProduct("LaminariaCore")]
+[assembly: AssemblyCopyright("Copyright © Alexandre Silva/MrKelpy 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -1,0 +1,13 @@
+C:\dev\LaminariaCore\C#\LaminariaCore-Winforms\bin\Release\LaminariaCore_Winforms.dll
+C:\dev\LaminariaCore\C#\LaminariaCore-Winforms\bin\Release\LaminariaCore_Winforms.pdb
+C:\dev\LaminariaCore\C#\LaminariaCore-Winforms\bin\Release\LaminariaCore_Winforms.xml
+C:\dev\LaminariaCore\C#\LaminariaCore-Winforms\bin\Release\LaminariaCore_General.dll
+C:\dev\LaminariaCore\C#\LaminariaCore-Winforms\bin\Release\System.CodeDom.dll
+C:\dev\LaminariaCore\C#\LaminariaCore-Winforms\bin\Release\LaminariaCore_General.xml
+C:\dev\LaminariaCore\C#\LaminariaCore-Winforms\bin\Release\System.CodeDom.xml
+C:\dev\LaminariaCore\C#\LaminariaCore-Winforms\obj\Release\LaminariaCore-Winforms.csproj.AssemblyReference.cache
+C:\dev\LaminariaCore\C#\LaminariaCore-Winforms\obj\Release\LaminariaCore-Winforms.csproj.CoreCompileInputs.cache
+C:\dev\LaminariaCore\C#\LaminariaCore-Winforms\obj\Release\LaminariaCore-Winforms.csproj.CopyComplete
+C:\dev\LaminariaCore\C#\LaminariaCore-Winforms\obj\Release\LaminariaCore_Winforms.dll
+C:\dev\LaminariaCore\C#\LaminariaCore-Winforms\obj\Release\LaminariaCore_Winforms.xml
+C:\dev\LaminariaCore\C#\LaminariaCore-Winforms\obj\Release\LaminariaCore_Winforms.pdb

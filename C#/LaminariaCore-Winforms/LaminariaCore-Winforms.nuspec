@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>LaminariaCore-Winforms</id>
+    <version>1.0.0</version>
+    <title>LaminariaCore - Winforms</title>
+    <authors>MrKelpy</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <icon>icon.png</icon>
+    <projectUrl>https://github.com/MrKelpy/LaminariaCore</projectUrl>
+    <description>A winforms utility library with methods and systems used for winforms applications.</description>
+    <copyright>Copyright © Alexandre Silva/MrKelpy 2023</copyright>
+    <tags>Utilitary Winforms</tags>
+  </metadata>
+  <files>
+    <file src="*\**" target="\" exclude="UnitTesting\**\*.*"/>
+	<file src="..\..\icon.png"/>
+</files>
+</package>

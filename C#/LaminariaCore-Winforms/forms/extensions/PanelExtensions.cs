@@ -1,14 +1,13 @@
 using System.Linq;
 using System.Windows.Forms;
 
-namespace PgpsUtilsAEFC.forms.extensions
+namespace LaminariaCore_Winforms.forms.extensions
 {
     /// <summary>
     /// This class implements methods to extend the functionality of Panels in Windows Forms.
     /// </summary>
     public static class PanelExtensions
     {
-
         /// <summary>
         /// This extension method is used to add the contents from an external panel into
         /// the current panel.

@@ -1,0 +1,11 @@
+C:\dev\LaminariaCore\C#\LaminariaCore-General\bin\Release\LaminariaCore_General.dll
+C:\dev\LaminariaCore\C#\LaminariaCore-General\bin\Release\LaminariaCore_General.pdb
+C:\dev\LaminariaCore\C#\LaminariaCore-General\bin\Release\System.CodeDom.dll
+C:\dev\LaminariaCore\C#\LaminariaCore-General\bin\Release\System.CodeDom.xml
+C:\dev\LaminariaCore\C#\LaminariaCore-General\obj\Release\LaminariaCore-General.csproj.AssemblyReference.cache
+C:\dev\LaminariaCore\C#\LaminariaCore-General\obj\Release\LaminariaCore-General.csproj.CoreCompileInputs.cache
+C:\dev\LaminariaCore\C#\LaminariaCore-General\obj\Release\LaminariaCore-General.csproj.CopyComplete
+C:\dev\LaminariaCore\C#\LaminariaCore-General\obj\Release\LaminariaCore_General.dll
+C:\dev\LaminariaCore\C#\LaminariaCore-General\obj\Release\LaminariaCore_General.pdb
+C:\dev\LaminariaCore\C#\LaminariaCore-General\bin\Release\LaminariaCore_General.xml
+C:\dev\LaminariaCore\C#\LaminariaCore-General\obj\Release\LaminariaCore_General.xml

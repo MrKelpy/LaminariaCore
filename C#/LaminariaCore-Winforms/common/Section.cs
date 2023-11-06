@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using PgpsUtilsAEFC.common.abstraction;
-using PgpsUtilsAEFC.utils;
+using LaminariaCore_General.utils;
+using LaminariaCore_Winforms.common.abstraction;
 
-namespace PgpsUtilsAEFC.common
+namespace LaminariaCore_Winforms.common
 {
     /// <summary>
     /// This class represents a Section inside the File System provided by the FileManager class. It can't
@@ -19,11 +19,11 @@ namespace PgpsUtilsAEFC.common
         /// The section name.
         /// </summary>
         public string Name { get; set; }
-        
+
         /// <summary>
         /// The simplified name of the section. This is the name without the relative path.
         /// </summary>
-        public string SimpleName => Path.GetFileName(this.Name);
+        public string SimpleName => Path.GetFileName(Name);
 
         /// <summary>
         /// Main constructor for the Section class. Takes in the root of the file system and the full
@@ -33,9 +33,9 @@ namespace PgpsUtilsAEFC.common
         /// <param name="root">The full root path of the filesystem</param>
         internal Section(string sectionPath, string root) : base(sectionPath)
         {
-            this.SectionFullPath = PathUtils.NormalizePath(sectionPath);
-            this.Name = PathUtils.NormalizePath(this.SectionFullPath.Substring(root.Length));
-            this.RootPath = root;
+            SectionFullPath = PathUtils.NormalizePath(sectionPath);
+            Name = PathUtils.NormalizePath(SectionFullPath.Substring(root.Length));
+            RootPath = root;
         }
     }
 }
