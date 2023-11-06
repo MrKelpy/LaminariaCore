@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using LaminariaCore_Databases.sqlserver;
 using NUnit.Framework;
 

@@ -32,6 +32,9 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
+    <PropertyGroup>
+        <DocumentationFile>obj/Release/LaminariaCore_Databases.xml</DocumentationFile>
+    </PropertyGroup>
     <ItemGroup>
         <Reference Include="Microsoft.CSharp" />
         <Reference Include="System" />
@@ -43,6 +46,9 @@
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="sqlserver\SQLDatabaseManager.cs" />
         <Compile Include="sqlserver\SQLServerConnector.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="docs\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
