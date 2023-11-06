@@ -80,8 +80,7 @@ namespace LaminariaCore_Databases.sqlserver
             // Sends the restore command and returns the number of rows affected
             return this.SendNonQuery($"RESTORE DATABASE [{name}] FROM DISK = '{filepath}'");
         }
-
-
+        
         /// <summary>
         /// Performs a composite INSERT INTO query into the specified table, restricting the addition to specified
         /// fields and values.
