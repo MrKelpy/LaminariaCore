@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("LaminariaCore - Databases")]
-[assembly: AssemblyDescription("A utilitary library for connecting and managing databases in C#")]
+[assembly: AssemblyDescription("A utility library for connecting and managing databases in C#")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MrKelpy")]
 [assembly: AssemblyProduct("LaminariaCore")]

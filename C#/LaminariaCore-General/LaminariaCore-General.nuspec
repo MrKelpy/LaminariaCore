@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package >
   <metadata>
-    <id>com.mrkelpy.LaminariaCore</id>
+    <id>LaminariaCore-General</id>
     <version>1.0.0</version>
     <title>LaminariaCore - General</title>
     <authors>MrKelpy</authors>
@@ -10,7 +10,7 @@
     <icon>icon.png</icon>
     <projectUrl>https://github.com/MrKelpy/LaminariaCore</projectUrl>
     <description>A general utilitary library containing a bunch of useful methods and classes that get repeatedly used across programs.</description>
-    <copyright>Copyright © MrKelpy 2023</copyright>
+    <copyright>Copyright © Alexandre Silva/MrKelpy 2023</copyright>
     <tags>Utilitary General</tags>
   </metadata>
   <files>
