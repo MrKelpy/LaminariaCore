@@ -9,3 +9,4 @@ C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\obj\Debug\UnitTestin
 C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\obj\Debug\UnitTesting.csproj.CopyComplete
 C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\obj\Debug\UnitTesting.dll
 C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\obj\Debug\UnitTesting.pdb
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\bin\Debug\LaminariaCore_Databases.xml

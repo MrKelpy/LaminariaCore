@@ -1,4 +1,5 @@
 ﻿using System;
+using LaminariaCore_Databases.enumeration;
 using LaminariaCore_Databases.sqlserver;
 using NUnit.Framework;
 
@@ -113,6 +114,23 @@ namespace UnitTesting
             using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
             SQLDatabaseManager manager = new SQLDatabaseManager(connector);
             manager.ExportDatabase("Escola", "C:/dev/escola.bak");
+            
+            Assert.Pass();
+        }
+
+        [Test]
+        public void SelectTest()
+        {
+            using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
+            SQLDatabaseManager manager = new SQLDatabaseManager(connector);
+
+            foreach (var array in manager.Select("Alunos")) {
+                Console.WriteLine(array[0] + " " + array[1] + " " + array[2]);
+            }
+            
+            foreach (var array in manager.Select("Alunos", SQLQueryOptions.IncludeHeaders)) {
+                Console.WriteLine(array[0] + " " + array[1] + " " + array[2]);
+            }
             
             Assert.Pass();
         }

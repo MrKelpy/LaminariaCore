@@ -4,6 +4,22 @@
         <name>LaminariaCore_Databases</name>
     </assembly>
     <members>
+        <member name="T:LaminariaCore_Databases.enumeration.SQLQueryOptions">
+            <summary>
+            This class contains a the query options to be used in the SQLDatabaseManager, to modify
+            the results received from the queries.
+            </summary>
+        </member>
+        <member name="F:LaminariaCore_Databases.enumeration.SQLQueryOptions.IncludeHeaders">
+            <summary>
+            Using this option enables the inclusion of an initial headers array in the query results
+            </summary>
+        </member>
+        <member name="F:LaminariaCore_Databases.enumeration.SQLQueryOptions.NoHeaders">
+            <summary>
+            Using this option prevents the query results from including the initial headers array
+            </summary>
+        </member>
         <member name="T:LaminariaCore_Databases.sqlserver.SQLDatabaseManager">
             <summary>
             This class is used to manage one or multiple SQL Server databases. This class will be bound
@@ -92,36 +108,40 @@
             <param name="value">The value to add to the field</param>
             <returns>The number of rows affected</returns>
         </member>
-        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.Select(System.String[],System.String,System.String)">
+        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.Select(System.String[],System.String,System.String,LaminariaCore_Databases.enumeration.SQLQueryOptions)">
             <summary>
             Performs a SELECT query into the specified table, with the specified fields and condition.
             </summary>
             <param name="fields">The fields to select from the table</param>
             <param name="table">The table to select the fields from</param>
             <param name="condition">The condition to narrow down the results</param>
+            <param name="options">The SQL Query options to modify the result</param>
             <returns>A matrix containing the results</returns>
         </member>
-        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.Select(System.String[],System.String)">
+        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.Select(System.String[],System.String,LaminariaCore_Databases.enumeration.SQLQueryOptions)">
             <summary>
             Performs a SELECT query into the specified table, with the specified fields.
             </summary>
             <param name="fields">The fields to select from the table</param>
             <param name="table">The table to select the fields from</param>
+            <param name="options">The SQL Query options to modify the result</param>
             <returns>A matrix containing the results</returns>
         </member>
-        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.Select(System.String,System.String)">
+        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.Select(System.String,System.String,LaminariaCore_Databases.enumeration.SQLQueryOptions)">
             <summary>
             Performs a 'SELECT *' query into the specified table, with the and condition.
             </summary>
             <param name="table">The table to select the fields from</param>
             <param name="condition">The condition to narrow down the results</param>
+            <param name="options">The SQL Query options to modify the result</param>
             <returns>A matrix containing the results</returns>
         </member>
-        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.Select(System.String)">
+        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.Select(System.String,LaminariaCore_Databases.enumeration.SQLQueryOptions)">
             <summary>
             Performs a 'SELECT *' query into the specified table. This is equivalent to doing 'SELECT * FROM [Table]'
             </summary>
             <param name="table">The table to select the fields from</param>
+            <param name="options">The SQL Query options to modify the result</param>
             <returns>A matrix containing the results</returns>
         </member>
         <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.SendQuery(System.String)">
