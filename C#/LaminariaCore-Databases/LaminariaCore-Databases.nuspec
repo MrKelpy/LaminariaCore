@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>LaminariaCore-Databases</id>
+    <version>1.0.0</version>
+    <title>LaminariaCore - Databases</title>
+    <authors>MrKelpy</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <icon>icon.png</icon>
+    <projectUrl>https://github.com/MrKelpy/LaminariaCore</projectUrl>
+    <description>A utility library for connecting and managing databases in C#</description>
+    <copyright>Copyright © Alexandre Silva/MrKelpy 2023</copyright>
+    <tags>Utilitary Databases SQLServer</tags>
+  </metadata>
+  <files>
+    <file src="*\**" target="\" exclude="UnitTesting\**\*.*"/>
+	<file src="..\..\icon.png"/>
+</files>
+</package>

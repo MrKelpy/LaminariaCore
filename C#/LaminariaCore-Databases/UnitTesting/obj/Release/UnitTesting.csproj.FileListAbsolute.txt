@@ -1,0 +1,12 @@
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\bin\Release\UnitTesting.dll
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\bin\Release\UnitTesting.pdb
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\bin\Release\LaminariaCore_Databases.dll
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\bin\Release\nunit.framework.dll
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\bin\Release\LaminariaCore_Databases.pdb
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\bin\Release\nunit.framework.xml
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\obj\Release\UnitTesting.csproj.AssemblyReference.cache
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\obj\Release\UnitTesting.csproj.CoreCompileInputs.cache
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\obj\Release\UnitTesting.csproj.CopyComplete
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\obj\Release\UnitTesting.dll
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\obj\Release\UnitTesting.pdb
+C:\dev\LaminariaCore\C#\LaminariaCore-Databases\UnitTesting\bin\Release\LaminariaCore_Databases.xml
