@@ -26,4 +26,7 @@ hs_err_pid*
 # Unnecessary folders
 out/
 .idea/
-test/
+test
+
+# nupkg
+.nupkg
