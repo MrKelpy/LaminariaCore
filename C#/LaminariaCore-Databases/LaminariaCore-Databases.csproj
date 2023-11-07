@@ -43,13 +43,12 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="enumeration\SQLQueryOptions.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="sqlserver\SQLDatabaseManager.cs" />
         <Compile Include="sqlserver\SQLServerConnector.cs" />
     </ItemGroup>
     <ItemGroup>
-      <Content Include="docs\sqldatabasemanager-docs.md" />
-      <Content Include="docs\sqlserverconnector-docs.md" />
       <Content Include="README.md" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

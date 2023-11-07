@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using LaminariaCore_Databases.enumeration;
 
 namespace LaminariaCore_Databases.sqlserver
 {
@@ -168,8 +169,9 @@ namespace LaminariaCore_Databases.sqlserver
         /// <param name="fields">The fields to select from the table</param>
         /// <param name="table">The table to select the fields from</param>
         /// <param name="condition">The condition to narrow down the results</param>
+        /// <param name="options">The SQL Query options to modify the result</param>
         /// <returns>A matrix containing the results</returns>
-        public List<string[]> Select(string[] fields, string table, string condition)
+        public List<string[]> Select(string[] fields, string table, string condition, SQLQueryOptions options = SQLQueryOptions.NoHeaders)
         {
             // Builds the query based on the parameters, adding a condition if specified
             string query = "SELECT " + this.ArrayToQueryString(fields).Trim('(').Trim(')') +" FROM " + table;
@@ -181,7 +183,7 @@ namespace LaminariaCore_Databases.sqlserver
             
             // Sends the query and inserts the columns at the start of the results
             List<string[]> results = this.SendQuery(query);
-            results.Insert(0, columns);
+            if (options == SQLQueryOptions.IncludeHeaders) results.Insert(0, columns);
             
             return results;
         }
@@ -191,27 +193,30 @@ namespace LaminariaCore_Databases.sqlserver
         /// </summary>
         /// <param name="fields">The fields to select from the table</param>
         /// <param name="table">The table to select the fields from</param>
+        /// <param name="options">The SQL Query options to modify the result</param>
         /// <returns>A matrix containing the results</returns>
-        public List<string[]> Select(string[] fields, string table) =>
-            this.Select(fields, table, null);
+        public List<string[]> Select(string[] fields, string table, SQLQueryOptions options = SQLQueryOptions.NoHeaders) =>
+            this.Select(fields, table, null, options: options);
         
         /// <summary>
         /// Performs a 'SELECT *' query into the specified table, with the and condition.
         /// </summary>
         /// <param name="table">The table to select the fields from</param>
         /// <param name="condition">The condition to narrow down the results</param>
+        /// <param name="options">The SQL Query options to modify the result</param>
         /// <returns>A matrix containing the results</returns>
-        public List<string[]> Select(string table, string condition) =>
-            this.Select(new [] {"*"}, table, condition);
+        public List<string[]> Select(string table, string condition, SQLQueryOptions options = SQLQueryOptions.NoHeaders) =>
+            this.Select(new [] {"*"}, table, condition, options: options);
 
         
         /// <summary>
         /// Performs a 'SELECT *' query into the specified table. This is equivalent to doing 'SELECT * FROM [Table]'
         /// </summary>
         /// <param name="table">The table to select the fields from</param>
+        /// <param name="options">The SQL Query options to modify the result</param>
         /// <returns>A matrix containing the results</returns>
-        public List<string[]> Select(string table) =>
-            this.Select(new [] {"*"}, table, null);
+        public List<string[]> Select(string table, SQLQueryOptions options = SQLQueryOptions.NoHeaders) =>
+            this.Select(new [] {"*"}, table, null, options: options);
 
         /// <summary>
         /// Sends a command into the connected database. This is a genera command that will return
