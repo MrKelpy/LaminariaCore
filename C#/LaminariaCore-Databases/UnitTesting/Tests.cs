@@ -87,6 +87,7 @@ namespace UnitTesting
             if (!manager.UseDatabase("Escola")) Assert.Fail();
 
             string[] fields = { "Nome", "Idade", "Localidade" };
+            
             dynamic[] parameters = { "Ambrósio Oliveira", 18, "Forte da Casa" };
             if (manager.InsertInto("Alunos", fields, parameters))
                 Assert.Pass();
