@@ -29,9 +29,9 @@ namespace UnitTesting
 
             if (!manager.UseDatabase("Escola")) Assert.Fail();
 
-            var fields = manager.SendQuery("SELECT * FROM Alunos");
+            var fields = manager.SendQuery("SELECT Nome, Localidade FROM [Alunos] INNER JOIN [Matriculas] ON [Alunos].NumeroInterno = [Matriculas].NumeroInterno WHERE Ano = 11;");
             foreach (string[] field in fields)
-                Console.WriteLine(field[0] + " " + field[1] + " " + field[2]);
+                Console.WriteLine(field[0] + " " + field[1]);
             
             Assert.Pass();
         }
@@ -88,8 +88,7 @@ namespace UnitTesting
 
             string[] fields = { "Nome", "Idade", "Localidade" };
             
-            dynamic[] parameters = { "Ambrósio Oliveira", 18, "Forte da Casa" };
-            if (manager.InsertInto("Alunos", fields, parameters))
+            if (manager.InsertInto("Alunos", fields,  "Ambrósio Oliveira", 18, "Forte da Casa"))
                 Assert.Pass();
             
             Assert.Fail();
@@ -118,6 +117,17 @@ namespace UnitTesting
             
             Assert.Pass();
         }
+        
+        [Test]
+        public void RestoreTest()
+        {
+            using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "master");
+            SQLDatabaseManager manager = new SQLDatabaseManager(connector);
+            
+            manager.ImportDatabase("Escola", "C:/dev/escola.bak");
+            
+            Assert.Pass();
+        }
 
         [Test]
         public void SelectTest()
@@ -125,6 +135,31 @@ namespace UnitTesting
             using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
             SQLDatabaseManager manager = new SQLDatabaseManager(connector);
 
+            foreach (var array in manager.Select("Alunos")) {
+                Console.WriteLine(array[0] + " " + array[1] + " " + array[2]);
+            }
+            
+            foreach (var array in manager.Select("Alunos", SQLQueryOptions.IncludeHeaders)) {
+                Console.WriteLine(array[0] + " " + array[1] + " " + array[2]);
+            }
+            
+            Assert.Pass();
+        }
+        
+        [Test]
+        public void ConnectionTest()
+        {
+            using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
+            SQLDatabaseManager manager = new SQLDatabaseManager(connector);
+            
+            // Disconnects and reconnects multiple times
+            for (int i = 0; i < 10; i++) {
+                manager.Connector.Disconnect();
+                Console.WriteLine("Disconnected.");
+                manager.Connector.Reconnect();
+                Console.WriteLine("Reconnected.");
+            }
+            
             foreach (var array in manager.Select("Alunos")) {
                 Console.WriteLine(array[0] + " " + array[1] + " " + array[2]);
             }

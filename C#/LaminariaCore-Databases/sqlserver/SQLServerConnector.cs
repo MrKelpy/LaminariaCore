@@ -20,6 +20,11 @@ namespace LaminariaCore_Databases.sqlserver
         /// <summary>
         /// The connection string used to connect to the database.
         /// </summary>
+        public string ConnectionString { get; set; }
+        
+        /// <summary>
+        /// The connection string used to connect to the database.
+        /// </summary>
         public SqlConnection Connection { get; set; }
 
         /// <summary>
@@ -64,12 +69,24 @@ namespace LaminariaCore_Databases.sqlserver
         public void Dispose() => this.Connection.Dispose();
 
         /// <summary>
+        /// Disconnects from the server closing down any open connections. <br></br>
+        /// This is equivalent to calling Dispose().
+        /// </summary>
+        public void Disconnect() => this.Dispose();
+        
+        /// <summary>
+        /// Reconnects to the server using the last used connection string.
+        /// </summary>
+        public void Reconnect() => this.ConnectTo(this.ConnectionString);
+
+        /// <summary>
         /// Connects to an SQL Server given a connection string.
         /// </summary>
         /// <param name="connectionString">SQL Server Formatted Connection String</param>
         private void ConnectTo(string connectionString)
         {
-            this.Connection = new SqlConnection(connectionString);
+            this.ConnectionString = connectionString;
+            this.Connection = new SqlConnection(this.ConnectionString);
             this.Connection.Open();
         }
         

@@ -19,7 +19,7 @@ namespace LaminariaCore_Databases.sqlserver
         /// <summary>
         /// The connector object used to connect to the server.
         /// </summary>
-        private SQLServerConnector Connector { get; set; }
+        public SQLServerConnector Connector { get; set; }
         
         /// <summary>
         /// General constructor for the SQLDatabaseManager class. Takes in an SQLServerConnector object

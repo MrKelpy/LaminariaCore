@@ -213,6 +213,11 @@
             
             </summary>
         </member>
+        <member name="P:LaminariaCore_Databases.sqlserver.SQLServerConnector.ConnectionString">
+            <summary>
+            The connection string used to connect to the database.
+            </summary>
+        </member>
         <member name="P:LaminariaCore_Databases.sqlserver.SQLServerConnector.Connection">
             <summary>
             The connection string used to connect to the database.
@@ -246,6 +251,17 @@
         <member name="M:LaminariaCore_Databases.sqlserver.SQLServerConnector.Dispose">
             <summary>
             Disposes of the connection to the database.
+            </summary>
+        </member>
+        <member name="M:LaminariaCore_Databases.sqlserver.SQLServerConnector.Disconnect">
+            <summary>
+            Disconnects from the server closing down any open connections. <br></br>
+            This is equivalent to calling Dispose().
+            </summary>
+        </member>
+        <member name="M:LaminariaCore_Databases.sqlserver.SQLServerConnector.Reconnect">
+            <summary>
+            Reconnects to the server using the last used connection string.
             </summary>
         </member>
         <member name="M:LaminariaCore_Databases.sqlserver.SQLServerConnector.ConnectTo(System.String)">
