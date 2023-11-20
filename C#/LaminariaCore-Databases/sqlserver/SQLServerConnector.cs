@@ -23,7 +23,7 @@ namespace LaminariaCore_Databases.sqlserver
         public string ConnectionString { get; set; }
         
         /// <summary>
-        /// The connection string used to connect to the database.
+        /// The connection object used to access the database
         /// </summary>
         public SqlConnection Connection { get; set; }
 

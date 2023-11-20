@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>LaminariaCore-Databases</id>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <title>LaminariaCore - Databases</title>
     <authors>MrKelpy</authors>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
@@ -14,7 +14,6 @@
     <tags>Utilitary Databases SQLServer</tags>
   </metadata>
   <files>
-    <file src="*\**" target="\" exclude="bin\**\*.*"/>
     <file src="*\**" target="\" exclude="UnitTesting\**\*.*"/>
 	<file src="..\..\icon.png"/>
 </files>

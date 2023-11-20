@@ -14,7 +14,6 @@
     <tags>Utilitary General</tags>
   </metadata>
   <files>
-     <file src="*\**" target="\" exclude="bin\**\*.*"/>
     <file src="*\**" target="\" exclude="UnitTesting\**\*.*"/>
 	<file src="..\..\icon.png"/>
 </files>

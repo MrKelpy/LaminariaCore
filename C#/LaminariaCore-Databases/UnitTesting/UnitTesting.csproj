@@ -264,6 +264,7 @@
       </ProjectReference>
     </ItemGroup>
     <ItemGroup>
+      <Content Include="assets\football.sql" />
       <Content Include="assets\school.sql" />
     </ItemGroup>
     <ItemGroup>
