@@ -144,13 +144,39 @@
             <param name="options">The SQL Query options to modify the result</param>
             <returns>A matrix containing the results</returns>
         </member>
+        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.CreateView(System.String,System.String[],System.String[],System.String)">
+            <summary>
+            Creates a view in the database with the specified name, fields, values and condition.
+            </summary>
+            <param name="viewName">The name of the view to be created</param>
+            <param name="fields">The fields to be included in the view</param>
+            <param name="tables">The tables to get the fields from</param>
+            <param name="condition">The conditional restrictions for the inclusion of values</param>
+            <returns>Whether or not the view was created</returns>
+        </member>
+        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.CreateView(System.String,System.String[],System.String[])">
+            <summary>
+            Creates a view in the database with the specified name, fields and values.
+            </summary>
+            <param name="viewName">The name of the view to be created</param>
+            <param name="fields">The fields to be included in the view</param>
+            <param name="tables">The tables to get the fields from</param>
+            <returns>Whether or not the view was created</returns>
+        </member>
+        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.SendQuery(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            Sends a command into the connected database. This is a general command that will return
+            the query as a Matrix.
+            </summary>
+            <param name="command">The MSSQL command to be sent to the database to query it</param>
+            <returns>A matrix with the results</returns>
+        </member>
         <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.SendQuery(System.String)">
             <summary>
-            Sends a command into the connected database. This is a genera command that will return
-            the query as a Matrix-
+            Sends a query to the database based on a query string.
             </summary>
-            <param name="query">The MSSQL Statement to be sent to the database to query it</param>
-            <returns>A Matrix with the results</returns>
+            <param name="query">The query to be send into the database</param>
+            <returns>A matrix with the results</returns>
         </member>
         <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.SendNonQuery(System.String)">
             <summary>
@@ -181,7 +207,7 @@
             <param name="array">The array to be converted</param>
             <returns>The query string to be used to specify the query objects</returns>
         </member>
-        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.CreatePlaceholdersArrayString(System.Int32)">
+        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.CreatePlaceholdersArrayString(System.Int32,System.String)">
             <summary>
             Creates all of the placeholders to for a certain array about to be used in a query.
             <br></br>
@@ -189,9 +215,10 @@
             by the actual typed values in the array.
             </summary>
             <param name="arraySize">The size of the array to convert into placeholders</param>
+            <param name="parameterName">The name of the parameter to consider</param>
             <returns>The string containing the placeholders for the array</returns>
         </member>
-        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.AddValuesIntoCommand(System.Data.SqlClient.SqlCommand,System.Object[])">
+        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.AddValuesIntoCommand(System.Data.SqlClient.SqlCommand,System.String,System.Object[])">
             <summary>
             Adds the values into the command as parameters, with the placeholders being @p0, @p1, @p2, etc.
             <br></br>
@@ -199,7 +226,17 @@
             typed values into the query.
             </summary>
             <param name="command">The command to be sent to the server, with the placeholders up</param>
+            <param name="parameterName">The name of the parameter to change</param>
             <param name="values">The values to be replaced by the placeholders</param>
+        </member>
+        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.ProcessFields(System.String[],System.String)">
+            <summary>
+            Checks if the fields array is only a "*", in which case it should return the "*" to use the
+            SQL * identifier. Otherwise, it should return the placeholders for the array.
+            </summary>
+            <param name="fields">The fields to be processed</param>
+            <param name="parameterName">The parameter name to create the placeholder with</param>
+            <returns>Either * or a placeholder string.</returns>
         </member>
         <member name="T:LaminariaCore_Databases.sqlserver.SQLServerConnector">
             <summary>
@@ -220,7 +257,7 @@
         </member>
         <member name="P:LaminariaCore_Databases.sqlserver.SQLServerConnector.Connection">
             <summary>
-            The connection string used to connect to the database.
+            The connection object used to access the database
             </summary>
         </member>
         <member name="M:LaminariaCore_Databases.sqlserver.SQLServerConnector.#ctor(System.String)">

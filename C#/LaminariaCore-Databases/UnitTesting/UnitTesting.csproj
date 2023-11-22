@@ -266,6 +266,7 @@
     <ItemGroup>
       <Content Include="assets\football.sql" />
       <Content Include="assets\school.sql" />
+      <Content Include="assets\SQLPGPS.sql" />
     </ItemGroup>
     <ItemGroup>
       <None Include="App.config" />

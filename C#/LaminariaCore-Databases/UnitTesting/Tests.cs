@@ -22,6 +22,26 @@ namespace UnitTesting
         }
         
         [Test]
+         public void ViewTest()
+        {
+            using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "master");
+            SQLDatabaseManager manager = new SQLDatabaseManager(connector);
+            
+            int rows = manager.RunSqlScript("../../assets/school.sql");
+            Console.WriteLine(rows + " rows affected.");
+
+            manager.UseDatabase("Escola");
+            string viewName = "nums";
+            manager.CreateView(viewName, new [] {"Alunos.NumeroInterno"}, new [] {"Alunos"});
+
+            foreach (var array in manager.Select(viewName)) {
+                Console.WriteLine(array[0]);
+            }
+            
+            Assert.Pass();
+        }
+        
+        [Test]
         public void QueryTest()
         {
             using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "master");
