@@ -148,6 +148,10 @@
             <summary>
             Creates a view in the database with the specified name, fields, values and condition.
             </summary>
+            <remarks style="color:red">
+            This method is not safe and should be used with caution. SQL Injection is possible when using this method,
+            so, sanitise your inputs before using it.
+            </remarks>
             <param name="viewName">The name of the view to be created</param>
             <param name="fields">The fields to be included in the view</param>
             <param name="tables">The tables to get the fields from</param>

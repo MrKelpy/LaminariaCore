@@ -32,6 +32,7 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
+	
     <PropertyGroup>
         <DocumentationFile>obj/Release/LaminariaCore_Databases.xml</DocumentationFile>
     </PropertyGroup>

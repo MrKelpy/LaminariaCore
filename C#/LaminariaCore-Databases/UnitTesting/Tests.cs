@@ -32,10 +32,10 @@ namespace UnitTesting
 
             manager.UseDatabase("Escola");
             string viewName = "nums";
-            manager.CreateView(viewName, new [] {"Alunos.NumeroInterno"}, new [] {"Alunos"});
+            manager.CreateView(viewName, new [] {"Alunos.NumeroInterno", "Alunos.Nome", "Matriculas.Turma"}, new [] {"Alunos", "Matriculas"});
 
             foreach (var array in manager.Select(viewName)) {
-                Console.WriteLine(array[0]);
+                Console.WriteLine(array[0] + " " + array[1] + " " + array[2]);
             }
             
             Assert.Pass();

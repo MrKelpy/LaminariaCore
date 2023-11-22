@@ -253,7 +253,7 @@ namespace LaminariaCore_Databases.sqlserver
                            $"FROM {this.ArrayToQueryString(tables).Trim('(').Trim(')')})";
 
             // Adds the condition if specified
-            if (condition != null) query += " WHERE " + this.CreatePlaceholdersArrayString(1, "c");
+            if (condition != null) query += " WHERE " + condition;
 
             this.SendNonQuery(query);
             return true;
