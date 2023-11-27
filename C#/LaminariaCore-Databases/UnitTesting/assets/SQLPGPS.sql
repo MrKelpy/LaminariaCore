@@ -44,3 +44,6 @@ insert into Disciplinas values
 ('RDC','Redes de Comunica��o',8),
 ('PSI','Programa��o e Sistemas de Comunica��o',19)
 go
+
+
+UPDATE CursoPGPS.dbo.Classificacoes SET Classificacao = 15 WHERE Nprocesso = 21206 AND IdDisciplina = 'AQC' AND Modulo = 2
