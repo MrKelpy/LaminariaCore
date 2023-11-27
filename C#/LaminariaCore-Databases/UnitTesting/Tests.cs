@@ -52,7 +52,7 @@ namespace UnitTesting
             var fields = manager.SendQuery("SELECT Nome, Localidade FROM [Alunos] INNER JOIN [Matriculas] ON [Alunos].NumeroInterno = [Matriculas].NumeroInterno WHERE Ano = 11;");
             foreach (string[] field in fields)
                 Console.WriteLine(field[0] + " " + field[1]);
-            
+
             Assert.Pass();
         }
         
@@ -155,7 +155,7 @@ namespace UnitTesting
             using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "Escola");
             SQLDatabaseManager manager = new SQLDatabaseManager(connector);
 
-            foreach (var array in manager.Select("Alunos")) {
+            foreach (var array in manager.Select("Alunos", "Idade = 17")) {
                 Console.WriteLine(array[0] + " " + array[1] + " " + array[2]);
             }
             

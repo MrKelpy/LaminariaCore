@@ -128,11 +128,10 @@ namespace LaminariaCore_Databases.sqlserver
         public int DeleteFrom(string table, string condition)
         {
             // Builds the query
-            string query = $"DELETE FROM {table} WHERE {this.CreatePlaceholdersArrayString(1, "c")}";
+            string query = $"DELETE FROM {table} WHERE {condition}";
             
             // Adds the values into the command
             using SqlCommand command = new SqlCommand(query, this.Connector.Connection);
-            this.AddValuesIntoCommand(command, "c", condition);
             
             return command.ExecuteNonQuery();
         }
@@ -150,13 +149,12 @@ namespace LaminariaCore_Databases.sqlserver
             // Builds the query based on the parameters, adding a condition if specified
             string query = $"UPDATE {table} SET this.ProcessFields(fields, 'p') = @p1";
             
-            if (condition != null) query += " WHERE @p2";
+            if (condition != null) query += " WHERE " + condition;
             
             using SqlCommand command = new SqlCommand(query, this.Connector.Connection);
             command.Parameters.AddWithValue("@p0", fieldToUpdate);
             command.Parameters.AddWithValue("@p1", value);
-            if (condition != null) command.Parameters.AddWithValue("@p2", condition);
-
+            
             return command.ExecuteNonQuery();
         }
 
@@ -184,7 +182,7 @@ namespace LaminariaCore_Databases.sqlserver
             
             string query = $"SELECT {this.ProcessFields(fields)} FROM {table}";
             
-            if (condition != null) query += " WHERE " + this.CreatePlaceholdersArrayString(1, "c");
+            if (condition != null) query += " WHERE " + condition;
 
             // Gets the columns for the table removing the ones that are not in the query
             string[] columns = this.GetColumnsForTable(table);
@@ -193,7 +191,6 @@ namespace LaminariaCore_Databases.sqlserver
             // Adds the values into the placeholders
             using SqlCommand command = new SqlCommand(query, this.Connector.Connection);
             this.AddValuesIntoCommand(command, "f", fields);
-            if (condition != null) this.AddValuesIntoCommand(command, "c", condition);
             
             // Sends the query and inserts the columns at the start of the results
             List<string[]> results = this.SendQuery(command);
