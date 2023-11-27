@@ -147,7 +147,7 @@ namespace LaminariaCore_Databases.sqlserver
         public int Update(string table, string fieldToUpdate, dynamic value, string condition)
         {
             // Builds the query based on the parameters, adding a condition if specified
-            string query = $"UPDATE {table} SET this.ProcessFields(fields, 'p') = @p1";
+            string query = $"UPDATE {table} SET {this.ProcessFields(new [] {fieldToUpdate}, "p")} = @p1";
             
             if (condition != null) query += " WHERE " + condition;
             
