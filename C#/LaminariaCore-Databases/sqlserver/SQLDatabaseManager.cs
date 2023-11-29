@@ -257,6 +257,17 @@ namespace LaminariaCore_Databases.sqlserver
         }
         
         /// <summary>
+        /// Checks whether or not a database with the specified name exists.
+        /// </summary>
+        /// <param name="databaseName">The name of the database to check for</param>
+        /// <returns>True if it exists, false otherwise.</returns>
+        public bool DatabaseExists(string databaseName)
+        {
+            string query = $"SELECT * FROM sys.databases WHERE name = '{databaseName}'";
+            return this.SendQuery(new SqlCommand(query, this.Connector.Connection)).Count > 0;
+        }
+        
+        /// <summary>
         /// Creates a view in the database with the specified name, fields and values.
         /// </summary>
         /// <param name="viewName">The name of the view to be created</param>

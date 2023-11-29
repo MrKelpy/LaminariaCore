@@ -20,6 +20,17 @@ namespace UnitTesting
             Console.WriteLine(rows + " rows affected.");
             Assert.Pass();
         }
+
+        [Test]
+        public void DatabaseExistsTest()
+        {
+            using SQLServerConnector connector = new SQLServerConnector(@".\SQLEXPRESS", "master");
+            SQLDatabaseManager manager = new SQLDatabaseManager(connector);
+            
+            ScriptTest();
+            Assert.IsTrue(manager.DatabaseExists("Escola"));
+            Assert.IsFalse(manager.DatabaseExists("Escola031521"));
+        }
         
         [Test]
          public void ViewTest()
