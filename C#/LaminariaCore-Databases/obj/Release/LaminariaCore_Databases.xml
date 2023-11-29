@@ -158,6 +158,13 @@
             <param name="condition">The conditional restrictions for the inclusion of values</param>
             <returns>Whether or not the view was created</returns>
         </member>
+        <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.DatabaseExists(System.String)">
+            <summary>
+            Checks whether or not a database with the specified name exists.
+            </summary>
+            <param name="databaseName">The name of the database to check for</param>
+            <returns>True if it exists, false otherwise.</returns>
+        </member>
         <member name="M:LaminariaCore_Databases.sqlserver.SQLDatabaseManager.CreateView(System.String,System.String[],System.String[])">
             <summary>
             Creates a view in the database with the specified name, fields and values.
