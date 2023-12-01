@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>LaminariaCore-Databases</id>
-    <version>1.2.11</version>
+    <version>1.2.12</version>
     <title>LaminariaCore - Databases</title>
     <authors>MrKelpy</authors>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
