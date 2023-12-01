@@ -180,7 +180,7 @@ namespace LaminariaCore_Databases.sqlserver
         {
             // Builds the query based on the parameters, adding a condition if specified
             
-            string query = $"SELECT {this.ProcessFields(fields)} FROM {table}";
+            string query = $"SELECT {this.ArrayToQueryString(fields).Trim('(').Trim(')')} FROM {table}";
             
             if (condition != null) query += " WHERE " + condition;
 

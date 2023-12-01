@@ -174,6 +174,10 @@ namespace UnitTesting
                 Console.WriteLine(array[0] + " " + array[1] + " " + array[2]);
             }
             
+            foreach (var array in manager.Select(new [] {"Idade"}, "Alunos", SQLQueryOptions.IncludeHeaders)) {
+                Console.WriteLine(array[0]);
+            }
+            
             Assert.Pass();
         }
         
