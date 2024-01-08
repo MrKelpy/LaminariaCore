@@ -4,7 +4,7 @@ using LaminariaCore_General.utils;
 
 // ReSharper disable MemberCanBePrivate.Global
 
-namespace LaminariaCore_Winforms.common.abstraction
+namespace LaminariaCore_General.common.abstraction
 {
     /// <summary>   
     /// This abstract class implements every method that is used by both the FileManager and Section classes,

@@ -45,6 +45,9 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="common\abstraction\AbstractBaseOperations.cs" />
+        <Compile Include="common\FileManager.cs" />
+        <Compile Include="common\Section.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="utils\FileUtils.cs" />
         <Compile Include="utils\NetworkUtils.cs" />

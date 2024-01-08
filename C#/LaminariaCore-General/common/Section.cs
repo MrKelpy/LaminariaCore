@@ -1,8 +1,8 @@
 ﻿using System.IO;
+using LaminariaCore_General.common.abstraction;
 using LaminariaCore_General.utils;
-using LaminariaCore_Winforms.common.abstraction;
 
-namespace LaminariaCore_Winforms.common
+namespace LaminariaCore_General.common
 {
     /// <summary>
     /// This class represents a Section inside the File System provided by the FileManager class. It can't

@@ -49,9 +49,6 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="common\abstraction\AbstractBaseOperations.cs" />
-        <Compile Include="common\FileManager.cs" />
-        <Compile Include="common\Section.cs" />
         <Compile Include="forms\extensions\ControlExtensions.cs" />
         <Compile Include="forms\extensions\PanelExtensions.cs" />
         <Compile Include="internals\caches\OriginalParentCache.cs" />
