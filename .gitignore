@@ -31,3 +31,6 @@ bin/
 
 # nupkg
 .nupkg
+
+# php project
+PHP/
