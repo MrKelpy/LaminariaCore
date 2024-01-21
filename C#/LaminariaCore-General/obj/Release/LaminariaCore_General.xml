@@ -4,6 +4,161 @@
         <name>LaminariaCore_General</name>
     </assembly>
     <members>
+        <member name="T:LaminariaCore_General.common.abstraction.AbstractBaseOperations">
+            <summary>   
+            This abstract class implements every method that is used by both the FileManager and Section classes,
+            due to a similarity in functionality.
+            </summary>
+        </member>
+        <member name="P:LaminariaCore_General.common.abstraction.AbstractBaseOperations.OperationsTargetPath">
+            <summary>
+            The target path to perform these operations on. This will act as the "root" of all operations.
+            </summary>
+        </member>
+        <member name="P:LaminariaCore_General.common.abstraction.AbstractBaseOperations.RootPath">
+            <summary>
+            The root path of the file system.
+            </summary>
+        </member>
+        <member name="M:LaminariaCore_General.common.abstraction.AbstractBaseOperations.#ctor(System.String)">
+            <summary>
+            Main constructor for the AbstractBaseOperations class. Defines the
+            operations target path.
+            </summary>
+            <param name="operationsTargetPath">@link{AbstractBaseOperations.OperationsTargetPath}</param>
+        </member>
+        <member name="M:LaminariaCore_General.common.abstraction.AbstractBaseOperations.AddSection(System.String)">
+            <summary>
+            Adds a new section (Directory) into the file system.
+            </summary>
+            <param name="section">The relative path of the section, relative to the root.</param>
+            <returns>The section that was just added</returns>
+        </member>
+        <member name="M:LaminariaCore_General.common.abstraction.AbstractBaseOperations.RemoveSection(System.String)">
+            <summary>
+            Removes a section (Directory) from the file system.
+            </summary>
+            <param name="section">The relative path of the section, relative to the root.</param>
+        </member>
+        <member name="M:LaminariaCore_General.common.abstraction.AbstractBaseOperations.GetAllSections">
+            <summary>
+            Recursively searches for every section in the file system, and returns an array containing them.
+            </summary>
+            <returns>A Section[] containing the Section objects representing the directories.</returns>
+        </member>
+        <member name="M:LaminariaCore_General.common.abstraction.AbstractBaseOperations.GetAllTopLevelSections">
+            <summary>
+            Searches for every top level section in the file system, and returns an array containing them.
+            </summary>
+            <returns>A Section[] containing the Section objects representing the directories.</returns>
+        </member>
+        <member name="M:LaminariaCore_General.common.abstraction.AbstractBaseOperations.GetSectionsNamed(System.String)">
+            <summary>
+            Gets all the sections (Directories) in the file system, and returns the ones matching
+            the specified name.
+            </summary>
+            <param name="name">The name of the sections to search for.</param>
+            <returns>A Section[] containing the objects representing each directory in the file system.</returns>
+        </member>
+        <member name="M:LaminariaCore_General.common.abstraction.AbstractBaseOperations.GetFirstSectionNamed(System.String)">
+            <summary>
+            Gets all the sections (Directories) in the file system, and returns the first one with a matching name.
+            </summary>
+            <param name="name">The name of the sections to search for.</param>
+            <returns>A Section object representing the directory in the file system.</returns>
+        </member>
+        <member name="M:LaminariaCore_General.common.abstraction.AbstractBaseOperations.AddDocument(System.String)">
+            <summary>
+            Adds a document into the current Section if it doesn't exist.
+            </summary>
+            <param name="documentName">The name of the document to add into the section</param>
+            <returns>The path of the document that was just added</returns>
+        </member>
+        <member name="M:LaminariaCore_General.common.abstraction.AbstractBaseOperations.RemoveDocument(System.String)">
+            <summary>
+            Deletes a document from within a section, based on its relative path.
+            </summary>
+            <param name="documentName">The name of the document to remove from the section</param>
+        </member>
+        <member name="M:LaminariaCore_General.common.abstraction.AbstractBaseOperations.GetAllDocuments">
+            <summary>
+            Iterates over every item stemming from the relative root used, filters out the files
+            and returns an array with their full paths.
+            </summary>
+            <returns>A string[] containing every file stemming down from the root</returns>
+        </member>
+        <member name="M:LaminariaCore_General.common.abstraction.AbstractBaseOperations.GetAllTopLevelDocuments">
+            <summary>
+            Iterates over every top level item in the operations target path and
+            returns an array with their full paths.
+            </summary>
+            <returns>A string[] containing every top level file at the target path</returns>
+        </member>
+        <member name="M:LaminariaCore_General.common.abstraction.AbstractBaseOperations.GetDocumentsNamed(System.String)">
+            <summary>
+            Iterates over all the files stemming from the relative root and returns every name matched file.
+            </summary>
+            <param name="filename">The filename to match with</param>
+            <returns>A string[] with all the files that matched the filename</returns>
+        </member>
+        <member name="M:LaminariaCore_General.common.abstraction.AbstractBaseOperations.GetFirstDocumentNamed(System.String)">
+            <summary>
+            Iterates over all the files stemming from the relative root and returns the first name matched file.
+            </summary>
+            <param name="filename">The filename to match with</param>
+            <returns>A string containing the full path of the first matched file</returns>
+        </member>
+        <member name="T:LaminariaCore_General.common.FileManager">
+            <summary>
+            This class implements an interface to interact with a program's file structure
+            in a more convenient way.
+            </summary>
+        </member>
+        <member name="M:LaminariaCore_General.common.FileManager.#ctor(System.String,System.Boolean)">
+            <summary>
+            Main constructor for the FileManager class. Sets the root path to the specified value.
+            If not specified, use the AppData/.PROGRAM-NAME folder.
+            </summary>
+            <param name="root">The path to the root directory of the file system.</param>
+            <param name="appData">Whether or not to append the root to the appdata</param>
+        </member>
+        <member name="M:LaminariaCore_General.common.FileManager.WaitForFileAsync(System.String,System.Int32)">
+            <summary>
+            Blocks the thread waiting for a file to be released by another process and returns
+            it as a FileStream when it eventually is.
+            </summary>
+            <param name="path">The path of the file to get</param>
+            <param name="timeout">A maximum timeout in milliseconds</param>
+        </member>
+        <member name="T:LaminariaCore_General.common.Section">
+            <summary>
+            This class represents a Section inside the File System provided by the FileManager class. It can't
+            be instantiated by the user, and will only be accessible through the FileManager.
+            </summary>
+        </member>
+        <member name="P:LaminariaCore_General.common.Section.SectionFullPath">
+            <summary>
+            The full path for the section.
+            </summary>
+        </member>
+        <member name="P:LaminariaCore_General.common.Section.Name">
+            <summary>
+            The section name.
+            </summary>
+        </member>
+        <member name="P:LaminariaCore_General.common.Section.SimpleName">
+            <summary>
+            The simplified name of the section. This is the name without the relative path.
+            </summary>
+        </member>
+        <member name="M:LaminariaCore_General.common.Section.#ctor(System.String,System.String)">
+            <summary>
+            Main constructor for the Section class. Takes in the root of the file system and the full
+            path of the section.
+            </summary>
+            <param name="sectionPath">The full path of the section.</param>
+            <param name="root">The full root path of the filesystem</param>
+        </member>
         <member name="T:LaminariaCore_General.utils.FileUtils">
             <summary>
             This class provides a wide variety of methods for quick and easy writing/reading from files.
