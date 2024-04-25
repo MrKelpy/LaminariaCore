@@ -72,9 +72,9 @@ namespace LaminariaCore_General.utils
         /// </summary>
         /// <param name="path">The path to write into</param>
         /// <param name="data">The primitive values to write into the file.</param>
-        public static void DumpToFileBinary(string path, List<string> data)
+        public static void DumpToFileBinary(string path, List<dynamic> data)
         {
-            using (BinaryWriter s = new BinaryWriter(new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write)))
+            using (BinaryWriter s = new BinaryWriter(new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite)))
                 data.ForEach(x => s.Write(x));
         }
         
@@ -84,11 +84,11 @@ namespace LaminariaCore_General.utils
         /// </summary>
         /// <param name="path">The filepath to read the data from</param>
         /// <returns>The primitive values in a list of strings</returns>
-        public static List<string> ReadFromFileBinary(string path)
+        public static List<dynamic> ReadFromFileBinary(string path)
         {
-            List<string> values = new List<string>();
+            List<dynamic> values = new List<dynamic>();
 
-            using (BinaryReader s = new BinaryReader(new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read)))
+            using (BinaryReader s = new BinaryReader(new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read, FileShare.ReadWrite)))
                 while (s.PeekChar() != -1) values.Add(s.ReadString());
 
             return values;

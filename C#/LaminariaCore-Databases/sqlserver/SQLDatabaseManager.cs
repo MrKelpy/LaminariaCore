@@ -210,7 +210,7 @@ namespace LaminariaCore_Databases.sqlserver
             this.Select(fields, table, null, options: options);
         
         /// <summary>
-        /// Performs a 'SELECT *' query into the specified table, with the and condition.
+        /// Performs a 'SELECT *' query into the specified table, with the condition.
         /// </summary>
         /// <param name="table">The table to select the fields from</param>
         /// <param name="condition">The condition to narrow down the results</param>

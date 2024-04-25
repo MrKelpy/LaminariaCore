@@ -59,7 +59,7 @@ namespace LaminariaCore_Databases.sqlserver
         /// <param name="database">The database name to use</param>
         public SQLServerConnector(string server, string database)
         {
-            string conn = $"Server={server};Database={database};Pooling=False;Trusted_Connection=True;";
+            string conn = $"Server={server};Database={database};Pooling=False;Trusted_Connection=True";
             this.ConnectTo(conn);
         }
 

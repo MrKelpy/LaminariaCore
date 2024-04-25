@@ -59,7 +59,7 @@ namespace LaminariaCore_General.utils
         /// <returns>An instance of T with the serialized information.</returns>
         public static T DeserializeFromFile<T>(string filepath)
         {
-            using (FileStream file = File.Open(filepath, FileMode.Open))
+            using (FileStream file = File.Open(filepath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(T));
                 return (T) serializer.Deserialize(file);

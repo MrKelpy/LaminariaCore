@@ -122,14 +122,6 @@
             <param name="root">The path to the root directory of the file system.</param>
             <param name="appData">Whether or not to append the root to the appdata</param>
         </member>
-        <member name="M:LaminariaCore_General.common.FileManager.WaitForFileAsync(System.String,System.Int32)">
-            <summary>
-            Blocks the thread waiting for a file to be released by another process and returns
-            it as a FileStream when it eventually is.
-            </summary>
-            <param name="path">The path of the file to get</param>
-            <param name="timeout">A maximum timeout in milliseconds</param>
-        </member>
         <member name="T:LaminariaCore_General.common.Section">
             <summary>
             This class represents a Section inside the File System provided by the FileManager class. It can't
@@ -209,6 +201,14 @@
             </summary>
             <param name="path">The filepath to read the data from</param>
             <returns>The primitive values in a list of strings</returns>
+        </member>
+        <member name="M:LaminariaCore_General.utils.FileUtils.WaitForFileAsync(System.String,System.Int32)">
+            <summary>
+            Blocks the thread waiting for a file to be released by another process and returns
+            it as a FileStream when it eventually is.
+            </summary>
+            <param name="path">The path of the file to get</param>
+            <param name="timeout">A maximum timeout in milliseconds</param>
         </member>
         <member name="T:LaminariaCore_General.utils.NetworkUtils">
             <summary>
